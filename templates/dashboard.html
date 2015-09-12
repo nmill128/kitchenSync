@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link type="text/css" rel="stylesheet" href="css/custom.css"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+    <nav class="brown lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">My Kitchen Sync</a>
+            <!--<ul class="right hide-on-med-and-down">-->
+                <!--<li><a href="#">Navbar Link</a></li>-->
+            <!--</ul>-->
+
+            <ul id="nav-mobile" class="side-nav" style="left: -250px;">
+                <li><a href="#">Navbar Link</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    <main class="container z-depth-2 main">
+        <div class="row no_bot_margin">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s4"><a class="active" href="#tab1">Kitchen</a></li>
+                    <li class="tab col s4"><a href="#tab2">Shopping</a></li>
+                    <li class="tab col s4"><a href="#tab3">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="tab1">
+            <div class="row no_bot_margin" >
+                <div class="col s8 no_padding_right">
+                    <div class="col_background" style="height: 70px; padding-left: 15px;">
+                        <h4 class="no_margin" style="padding-top: 15px;">Checked In Item<span class="s">s</span></h4>
+                    </div>
+                </div>
+
+                <div class="col s4 no_padding_left">
+                    <div class="col_background" style="height: 70px; padding-right: 15px; padding-top: 15px;">
+                        <!-- Dropdown Trigger -->
+                        <a class='dropdown-button btn right' href='#' data-activates='dropdown1' style="padding-right: 10px;"><i class="material-icons right">keyboard_arrow_down</i>Sort By</a>
+
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content override'>
+                            <li><a href="#!">Name: A - Z</a></li>
+                            <li><a href="#!">Name: Z - A</a></li>
+                            <li><a href="#!">Added: Low - High</a></li>
+                            <li><a href="#!">Added: High - Low</a></li>
+                            <li><a href="#!">Expire: Low - High</a></li>
+                            <li><a href="#!">Expire: High - Low</a></li>
+                        </ul>
+
+                        <!-- Modal Trigger -->
+                        <div class="fixed-action-btn" style="bottom: 30px; right: 24px;">
+                            <a class="modal-trigger btn-floating btn-large deep-orange" href="#modal1">
+                                <i class="large material-icons">add</i>
+                            </a>
+                        </div>
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal modal-fixed-footer">
+                            <div class="modal-content row">
+                                <h5>Add Item</h5>
+
+                                <div class="input-field col s12">
+                                    <input id="name" type="text" class="validate">
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <input id="new_serving" type="text" maxlength="7">
+                                    <label for="new_serving">Serving</label>
+                                </div>
+                                <div class="input-field col s5">
+                                    <label for="new_add_date" class="">Add Date</label>
+                                    <input id="new_add_date" type="date" class="datepicker">
+                                </div>
+                                <div class="input-field col s5">
+                                    <label for="new_expire_date" class="">Expire Date</label>
+                                    <input id="new_expire_date" type="date" class="datepicker">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <table class="white striped centered">
+                <thead>
+                <tr>
+                    <th class="td_left_text" data-field="name" >Name</th>
+                    <th data-field="date-add">Date Added</th>
+                    <th data-field="pricing">Serving</th>
+                    <th data-field="date-expire">Date Expire</th>
+                    <th data-field="nav"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="td_left_text">Malk</td>
+                    <td>SEP 1</td>
+                    <td>6</td>
+                    <td>SEP 7</td>
+                    <td class="tr_nav">
+                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
+                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_left_text">Nugyo Bar White Yogurt </td>
+                    <td>SEP 09</td>
+                    <td>2</td>
+                    <td>SEP 14</td>
+                    <td class="tr_nav">
+                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
+                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_left_text">Black Bean and Brown Rice </td>
+                    <td>SEP 12</td>
+                    <td>16</td>
+                    <td>SEP 30</td>
+                    <td class="tr_nav">
+                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
+                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="tab2">
+
+            <table class="notebook-form centered">
+                <thead>
+                <tr>
+                    <th data-field="checkbox"></th>
+                    <th class="td_left_text" data-field="name" >Name</th>
+                    <th data-field="date-add">Date Added</th>
+                    <th data-field="price">Price</th>
+                    <th data-field="nav"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="check1" />
+                        <label for="check1"></label>
+                    </td>
+                    <td class="td_left_text">Malk</td>
+                    <td>SEP 1</td>
+                    <td>$6.00</td>
+                    <td class="tr_nav">
+                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
+                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="check2" />
+                        <label for="check2"></label>
+                    </td>
+                    <td class="td_left_text">Nugyo Bar White Yogurt </td>
+                    <td>SEP 09</td>
+                    <td>$2.00</td>
+                    <td class="tr_nav">
+                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
+                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" id="check3" />
+                        <label for="check3"></label>
+                    </td>
+                    <td class="td_left_text">Black Bean and Brown Rice </td>
+                    <td>SEP 12</td>
+                    <td>$5.00</td>
+                    <td class="tr_nav">
+                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
+                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- Modal Trigger -->
+            <div class="fixed-action-btn" style="bottom: 30px; right: 24px;">
+                <a class="modal-trigger btn-floating btn-large deep-orange" href="#modal2">
+                    <i class="large material-icons">add</i>
+                </a>
+            </div>
+            <!-- Modal Structure -->
+            <div id="modal2" class="modal modal-fixed-footer">
+                <div class="modal-content row">
+                    <h5>Add Item</h5>
+
+                    <div class="input-field col s12">
+                        <input id="name_2" type="text" class="validate">
+                        <label for="name_2">Name</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="new_serving_2" type="text" maxlength="7">
+                        <label for="new_serving_2">Serving</label>
+                    </div>
+                    <div class="input-field col s5">
+                        <label for="new_add_date_2" class="">Add Date</label>
+                        <input id="new_add_date_2" type="date" class="datepicker">
+                    </div>
+                    <div class="input-field col s5">
+                        <label for="new_expire_date_2" class="">Expire Date</label>
+                        <input id="new_expire_date_2" type="date" class="datepicker">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div id="tab3">
+            <div class="card-panel no_top_margin">
+                <div class="switch">
+                    <label>
+                        <input checked type="checkbox">
+                        <span class="lever"></span>
+                        Receive Notification
+                    </label>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="friend_name" type="text">
+                        <label for="friend_name">Friend's name</label>
+                    </div>
+                    <div class="col s12">
+                        <a class="waves-effect waves-light btn"><i class="material-icons left">supervisor_account</i>Add Friend</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15, // Creates a dropdown of 15 years to control year
+                format: 'mm/d/yyyy',
+            });
+        });
+    </script>
+</body>
+</html>

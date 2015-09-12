@@ -1,0 +1,74 @@
+/* CUSTOM */
+.tr_nav{
+    opacity: 0;
+}
+tr:hover .tr_nav{
+    opacity: 100;
+}
+.td_left_text{
+    padding-left: 25px;
+    text-align: left !important;
+}
+/* Notebook */
+
+.notebook-form{
+    background-color: #fffcce;
+}
+.notebook-form tr td:first-child{
+    border-right: 1px solid rgba(255, 153, 102, 0.2);
+}
+.notebook-form tr td:first-child label{
+    float: right;
+}
+.notebook-form tr{
+    border-bottom: 1px solid rgba(0,0,255,0.1);
+}
+.notebook-form thead th:first-child{
+    border-right: 1px solid rgba(255, 153, 102, 0.2);
+}
+/* Override */
+body{
+    background-color: #F0EAE7;
+}
+nav{
+    background-image: url("../img/hard_wood_background.jpg");
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+.main{
+    margin-top: 25px;
+}
+.override.dropdown-content li>a{
+    font-size: .85rem;
+    padding: .15rem 1rem;
+}
+
+/* Helper */
+.no_bot_margin{
+    margin-bottom: 0;
+}
+.no_top_margin{
+    margin-top: 0;
+}
+.no_margin{
+    margin: 0;
+}
+.no_padding_left{
+    padding-left: 0 !important;
+}
+.no_padding_right{
+    padding-right: 0 !important;
+}
+.col_background{
+    width: 100%;
+    background-color: #FFF;
+}
+
+/* Search Bar*/
+.search_bar{
+    padding: 0;
+}
+.search_bar input{
+    border: 0;
+    margin: 0;
+}
