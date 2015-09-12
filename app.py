@@ -22,7 +22,7 @@ def index():
 def getUsers():
 	 #db.users.insert({"name":"Yeomans"})
 	 # return db.users.find_one()
-	return "HI"
+	return client.database_names()
 
 # @app.route('/Trial')
 # def getTrial():
