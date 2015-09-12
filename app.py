@@ -35,8 +35,9 @@ def getUsers():
 	print "Stock"
 	print db.stock
 
-	return db.restock.find_one()
-
+	 
+	record = db.restock.find_one()
+	return record["Name"]
 # @app.route('/Trial')
 # def getTrial():
 # 	return "hi"
