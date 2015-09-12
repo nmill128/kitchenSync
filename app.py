@@ -65,7 +65,7 @@ def checkIn():
 	ExpDate = foodRecord["exp"]
 	Amount = foodRecord["amount"]
 	status = ""
-	record = db.fridge.find_one({"nfc":long(nfc)})
+	record = db.fridge.find_one({"nfc":nfc})
 	if (not record == None):
 		Date_added = record["Date_added"]
 		Date_updated = datetime.now()
