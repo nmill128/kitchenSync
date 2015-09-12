@@ -46,7 +46,7 @@ def getUsers():
 
 	 
 	record = db.restock.find_one()
-	obj_id = record["Object ID"]
+	obj_id = record["_id"]
 	food_id = record["Food_ID"]
 	user = record["User"]
 	Date_Used = record[Date_Used]
