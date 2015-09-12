@@ -89,7 +89,7 @@ def useOne():
 	return 'Success'
 
 @app.route('/login', methods = ['GET'])
-def login(request):
+def login():
 	email = request.form["email"]
 	password = request.form["password"]
 	record = db.users.find_one({"email":email})
