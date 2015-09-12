@@ -16,12 +16,15 @@ except pymongo.errors.ConnectionFailure, e:
    print "Could not connect to MongoDB: %s" % e 
 db = client.test
 
+Users = 0
+
+
 def getDate(dt):
 	return dt.strtftime("%m%d%Y")
 
 @app.route('/')
 def index():
-    return "<h1> This flask app is running!<h1>"
+    return g.user
 
 @app.route('/Users')
 def getUsers():
@@ -35,6 +38,19 @@ def getUsers():
 	friends = record["friends"]
 	jsonstr = {"email":email, "password":password, "name":name, "phone":phone, "sharing":sharing, "EXPreminders":EXPreminders, "friends":friends}
 	return json.dumps(jsonstr)
+
+@app.route('/AddUser', methods = ['Post'])
+def addUser():
+	email = request.form["email"]
+	password = request.form["password"]
+	name = request.form["name"]
+	phone = request.form["phone"]
+	sharing = request.form["sharing"]
+	EXPreminders = request.form["EXPreminders"]
+	userId = Users
+	Users +=1
+	db.users.insert({"UserId":userId, "email":email, "password":password, "name":name, "phone":phone, "sharing":sharing, "EXPreminders":EXPreminders, "friends":{}})
+	return "Success"
 
 @app.route('/CheckIn', methods = ['Post'])
 def checkIn():
@@ -66,11 +82,9 @@ def checkOut():
 @app.route('/Use', methods = ['Post'])
 def useOne():
 	nfc = request.form["nfc"]
-	user = request.form["userId"]
 	record = db.stock.find_one({"nfc":nfc})
 	amount = record["amount"]
-	ssize = record["ssize"]
-	newAmount = amount - ssize;
+	newAmount = amount - 1;
 	db.stock.update_one({"nfc":nfc},{"amount":newAmount})
 	return 'Success'
 
@@ -80,9 +94,13 @@ def login():
 	password = request.form["password"]
 	record = db.users.find_one({"email":email})
 	if(record["password"] == password):
+		g.user = record["UserId"]
 		return json.dumps({"UserId":record["UserId"]})
 	else:
 		return "User Authentication Failed"
+
+@app.route('/dashboard')
+def 
 
 @app.route('/Stock', methods = ['Get'])
 def getStock():
