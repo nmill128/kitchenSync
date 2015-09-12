@@ -49,7 +49,7 @@ def getUsers():
 	obj_id = record["_id"]
 	food_id = record["Food_ID"]
 	user = record["User"]
-	Date_Used = record[Date_Used]
+	Date_Used = record["Date_Used"]
 	jsonstr ={"ID": obj_id, "Food_ID":food_id,"User":user, "Date-Used":Date_Used}
 	return json.dumps(jsonstr)
 # @app.route('/Trial')
