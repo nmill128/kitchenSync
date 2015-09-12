@@ -24,7 +24,7 @@ def getDate(dt):
 
 @app.route('/')
 def index():
-    return g.user
+    return "<h1>Hi Ben!<h1>"
 
 @app.route('/Users')
 def getUsers():
@@ -89,13 +89,18 @@ def useOne():
 	return 'Success'
 
 
+
+
 @app.route('/<username>')
 def dashboard(username):
 	record = db.users.find_one({"username":username})
 	if (not record == None):
 		return username
 	else:
-		return "daron sux\n" + username
+		return "daron is a nice lady\n" + username
+@app.route('/<username>/AddFriend', methods=['POST'])
+def addFriend(username):
+
 
 # @app.route('/login', methods = ['GET'])
 # def login():
