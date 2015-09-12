@@ -6,7 +6,11 @@ from pymongo import MongoClient
 
 
 app = Flask(__name__)
-client = MongoClient()
+try:
+    client=pymongo.MongoClient()
+    print "Connected successfully!!!"
+except pymongo.errors.ConnectionFailure, e:
+   print "Could not connect to MongoDB: %s" % e 
 db = client.newdb
 
 
