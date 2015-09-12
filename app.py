@@ -103,7 +103,7 @@ def addOne():
 	return json.dumps(jsonstr)
 
 @app.route('/Minus', methods = ['POST'])
-def addOne():
+def subOne():
 	nfc = request.form["nfc"]
 	userId = request.form["userId"]
 	foodRecord = db.food.find_one({"nfc":long(nfc)})
