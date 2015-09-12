@@ -59,9 +59,9 @@ def checkIn():
 	foodRecord = db.food.find_one({"nfc":long(nfc)})
 	name = foodRecord["name"]
 	upc = foodRecord["upc"]
-	category = foodRecord["Category"]
-	ExpDate = foodRecord["ExpDate"]
-	Amount = foodRecord["Amount"]
+	category = foodRecord["category"]
+	ExpDate = foodRecord["exp"]
+	Amount = foodRecord["amount"]
 	Date_added = Date_updated = getDate()
 	db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Brand":Brand, "Category":category, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
 	#name, expiration date, string "added"
