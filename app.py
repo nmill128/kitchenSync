@@ -88,7 +88,7 @@ def useOne():
 	db.stock.update_one({"nfc":nfc},{"amount":newAmount})
 	return 'Success'
 
-@app.route('/login', methods = ['Get'])
+@app.route('/login', methods = ['Post'])
 def login():
 	email = request.form["email"]
 	password = request.form["password"]
