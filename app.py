@@ -39,7 +39,7 @@ def getUsers():
 	jsonstr = {"email":email, "password":password, "name":name, "phone":phone, "sharing":sharing, "EXPreminders":EXPreminders, "friends":friends}
 	return json.dumps(jsonstr)
 
-@app.route('/AddUser', methods = ['Post'])
+@app.route('/AddUser', methods = ['POST'])
 def addUser():
 	email = request.form["email"]
 	password = request.form["password"]
@@ -52,7 +52,7 @@ def addUser():
 	db.users.insert({"UserId":userId, "email":email, "password":password, "name":name, "phone":phone, "sharing":sharing, "EXPreminders":EXPreminders, "friends":{}})
 	return "Success"
 
-@app.route('/CheckIn', methods = ['Post'])
+@app.route('/CheckIn', methods = ['POST'])
 def checkIn():
 	nfc = request.form["nfc"]
 	userId = request.form["userId"]
@@ -68,7 +68,7 @@ def checkIn():
 	jsonstr = {"Name":name, "ExpDate":ExpDate, "Status":"Added"}
 	return json.dumps(jsonstr)
 
-@app.route('/CheckOut', methods = ['Post'])
+@app.route('/CheckOut', methods = ['POST'])
 def checkOut():
 	nfc = request.form["nfc"]
 	#temp record
@@ -79,7 +79,7 @@ def checkOut():
 	db.restock.insert({"upc":record["upc":upc],"nfc":record["nfc":nfc],"User":record["User":user], "Date_Used":mydate.strtftime("%m%d%Y")})
 	return "Success"
 
-@app.route('/Use', methods = ['Post'])
+@app.route('/Use', methods = ['POST'])
 def useOne():
 	nfc = request.form["nfc"]
 	record = db.stock.find_one({"nfc":nfc})
@@ -88,7 +88,7 @@ def useOne():
 	db.stock.update_one({"nfc":nfc},{"amount":newAmount})
 	return 'Success'
 
-@app.route('/login', methods = ['Get'])
+@app.route('/login', methods = ['GET'])
 def login(request):
 	email = request.form["email"]
 	password = request.form["password"]
@@ -100,7 +100,7 @@ def login(request):
 		return "User Authentication Failed"
 
 
-@app.route('/Stock', methods = ['Get'])
+@app.route('/Stock', methods = ['GET'])
 def getStock():
 	user = request.form["userId"]
 
