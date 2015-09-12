@@ -71,7 +71,7 @@ def checkIn():
 		db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
 		status = "Added"
 	else:
-		db.fridge.update({"amount":Amount-1})
+		db.fridge.update({"nfc":nfc},{"amount":Amount-1})
 		status = "Used"
 	#name, expiration date, string "added"
 	jsonstr = {"Name":name, "ExpDate":getDate(ExpDate), "Status":status}
