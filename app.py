@@ -66,12 +66,15 @@ def checkIn():
 	Amount = foodRecord["amount"]
 	status = ""
 	record = db.fridge.find_one({"nfc":nfc})
+	print nfc
 	if (not record == None):
+		print "Found"
 		Date_added = record["Date_added"]
 		Date_updated = datetime.now()
 		db.fridge.update({"nfc":nfc}, {"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "amount":Amount, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
 		status = "Using"
 	else:
+		print "New"
 		Date_added = Date_updated = datetime.now()
 		db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category,"amount":Amount, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
 		status = "Added"
