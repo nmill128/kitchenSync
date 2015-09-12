@@ -37,7 +37,7 @@ def getUsers():
 
 	 
 	record = db.restock.find_one()
-	return record["Name"]
+	return record["Food_ID"]
 # @app.route('/Trial')
 # def getTrial():
 # 	return "hi"
