@@ -9,7 +9,7 @@ import sendgrid
 import urllib,urllib2
 
 app = Flask(__name__)
-client = MongoClient()
+# client = MongoClient()
 
 
 @app.route('/')
