@@ -15,8 +15,8 @@ def index():
 
 @app.route('/Users')
 def getUsers():
-	# return "Hi"
-	return users.find_one()
+	 return "Hi"
+	#return users.find_one()
 
 if __name__=='__main__':
     app.run(port=8000)
