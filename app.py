@@ -94,6 +94,8 @@ def dashboard(username):
 	record = db.users.find_one({"username":username})
 	if (not record == None):
 		return username
+	else:
+		return "daron sux\n" + username
 
 # @app.route('/login', methods = ['GET'])
 # def login():
