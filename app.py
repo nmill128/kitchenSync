@@ -69,7 +69,8 @@ def checkIn():
 	if (not record == None):
 		Date_added = record["Date_added"]
 		Date_updated = datetime.now()
-		db.fridge.update({"nfc":nfc},{"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "amount":Amount-1, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
+		db.fridge.remove({"nfc":nfc})
+		db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "amount":Amount-1, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
 		status = "Used"
 	else:
 		Date_added = Date_updated = datetime.now()
