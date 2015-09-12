@@ -100,6 +100,7 @@ def dashboard(username):
 		return "daron is a nice lady\n" + username
 @app.route('/<username>/AddFriend', methods=['POST'])
 def addFriend(username):
+	return 'Hi friend'
 
 
 # @app.route('/login', methods = ['GET'])
