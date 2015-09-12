@@ -18,5 +18,14 @@ def getUsers():
 	 return users.find()
 	#return users.find_one()
 
+@app.route('/Trial')
+def getTrial():
+	return "hi"
+
+@app.route('/Tester')
+def tryTest():
+	user = users.find_one()
+	return "hi"
+
 if __name__=='__main__':
     app.run(port=8000)
