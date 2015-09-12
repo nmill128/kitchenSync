@@ -72,7 +72,7 @@ def checkIn():
 		status = "Added"
 	else:
 		Date_updated = datetime.now()
-		db.fridge.update({"nfc":nfc},{{"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "amount":amount-1 "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
+		db.fridge.update({"nfc":nfc},{{"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "amount":amount-1, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
 		status = "Used"
 	#name, expiration date, string "added"
 	jsonstr = {"Name":name, "ExpDate":getDate(ExpDate), "Status":status}
