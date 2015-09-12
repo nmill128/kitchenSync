@@ -31,7 +31,7 @@ def getUsers():
 	print "Users"
 	print users
 	print "Restock"
-	print restock
+	print restock.find()
 	print "Fridge"
 	print fridge
 	print "Stock"
