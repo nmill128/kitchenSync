@@ -17,8 +17,8 @@ def index():
 @app.route('/Users')
 def getUsers():
 	 db.users.insert({"name":"Yeomans"})
-	 return db.users.find_one()
-	#return users.find_one()
+	 # return db.users.find_one()
+	return "HI"
 
 # @app.route('/Trial')
 # def getTrial():
