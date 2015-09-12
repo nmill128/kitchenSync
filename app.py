@@ -25,13 +25,13 @@ def index():
 def getUsers():
 	print "I'm in the function"
 	print client
-	 #db.users.insert({"name":"Yeomans"})
-	 # return db.users.find_one()
+	#client.users.insert({"name":"Yeomans"})
+	# return client.users.find_one()
 	# print client.database_names()
 	print "Users"
 	print users
 	print "Restock"
-	print client.restock.find()
+	print client.Restock.find_one()
 	print "Fridge"
 	print fridge
 	print "Stock"
