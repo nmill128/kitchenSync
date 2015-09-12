@@ -16,8 +16,8 @@ except pymongo.errors.ConnectionFailure, e:
    print "Could not connect to MongoDB: %s" % e 
 db = client.test
 
-def getDate():
-	return mydate.strtftime("%m%d%Y")
+def getDate(dt):
+	return dt.strtftime("%m%d%Y")
 
 @app.route('/')
 def index():
@@ -81,7 +81,7 @@ def login():
 	record = db.users.find_one({"email":email})
 	if(record["password"] == password):
 		return json.dumps({"UserId":record["UserId"]})
-	elif:
+	else:
 		return "User Authentication Failed"
 
 @app.route('/Stock', methods = ['Get'])
