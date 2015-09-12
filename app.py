@@ -40,7 +40,7 @@ def getUsers():
 def checkIn():
 	nfc = request.form["nfc"]
 	userId = request.form["userId"]
-	foodRecord = db.stock.find_one("nfc":nfc)
+	foodRecord = db.stock.find_one({"nfc":nfc})
 	name = foodRecord["Brand"]
 	upc = foodRecord["upc"]
 	category = foodRecord["Category"]
@@ -56,7 +56,7 @@ def checkIn():
 def checkOut():
 	nfc = request.form["nfc"]
 	#temp record
-	record = db.stock.find_one("nfc":nfc)
+	record = db.stock.find_one({"nfc":nfc})
 	# Delete it from the fridge area
 	db.fridge.delete_one("nfc":nfc)
 	#Add its info to the restock area
@@ -67,7 +67,7 @@ def checkOut():
 def useOne():
 	nfc = request.form["nfc"]
 	user = request.form["userId"]
-	record = db.stock.find_one("nfc":nfc)
+	record = db.stock.find_one({"nfc":nfc})
 	amount = record["amount"]
 	ssize = record["ssize"]
 	newAmount = amount - ssize;
@@ -78,7 +78,7 @@ def useOne():
 def login():
 	email = request.form["email"]
 	password = request.form["password"]
-	record = db.users.find_one("email":email)
+	record = db.users.find_one({"email":email})
 	if(record["password"] == password):
 		return json.dumps({"UserId":record["UserId"]})
 	elif:
