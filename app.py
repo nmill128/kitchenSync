@@ -57,7 +57,7 @@ def checkIn():
 	nfc = request.form["nfc"]
 	userId = request.form["userId"]
 	foodRecord = db.stock.find_one({"nfc":nfc})
-	name = foodRecord["Brand"]
+	name = foodRecord["name"]
 	upc = foodRecord["upc"]
 	category = foodRecord["Category"]
 	ExpDate = foodRecord["ExpDate"]
