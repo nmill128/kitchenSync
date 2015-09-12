@@ -6,6 +6,7 @@ from pymongo import MongoClient
 
 
 app = Flask(__name__)
+app.debug = true
 try:
     client=pymongo.MongoClient()
     print "Connected successfully!!!"
@@ -31,7 +32,7 @@ def getUsers():
 	print "Users"
 	print users
 	print "Restock"
-	print client.Restock.find_one()
+	print restock.find_one()
 	print "Fridge"
 	print fridge
 	print "Stock"
