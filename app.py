@@ -11,7 +11,10 @@ try:
     print "Connected successfully!!!"
 except pymongo.errors.ConnectionFailure, e:
    print "Could not connect to MongoDB: %s" % e 
-db = client.newdb
+users = client.users
+restock = client.Restock
+fridge = client.Fridge
+stock = client.Stock
 
 
 @app.route('/')
@@ -24,7 +27,9 @@ def getUsers():
 	print client
 	 #db.users.insert({"name":"Yeomans"})
 	 # return db.users.find_one()
-	print client.database_names()
+	# print client.database_names()
+	print users.find_one()
+
 	return "turtles"
 
 # @app.route('/Trial')
