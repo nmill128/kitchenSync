@@ -67,14 +67,15 @@ def checkIn():
 	status = ""
 	record = db.fridge.find_one({"nfc":long(nfc)})
 	if (not record == None):
-		Date_added = Date_updated = datetime.now()
-		db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category,"amount":Amount, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
-		status = "Added"
-	else:
 		Date_added = record["Date_added"]
 		Date_updated = datetime.now()
 		db.fridge.update({"nfc":nfc},{"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "amount":Amount-1, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
 		status = "Used"
+	else:
+		Date_added = Date_updated = datetime.now()
+		db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category,"amount":Amount, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
+		status = "Added"
+
 	#name, expiration date, string "added"
 	jsonstr = {"Name":name, "ExpDate":getDate(ExpDate), "Status":status}
 	return json.dumps(jsonstr)
