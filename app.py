@@ -92,7 +92,7 @@ def useOne():
 @app.route('/<username>')
 def dashboard(username):
 	record = db.users.find_one({"username":username})
-	if record not None:
+	if (not record == None):
 		return username
 
 # @app.route('/login', methods = ['GET'])
