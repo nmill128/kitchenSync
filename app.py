@@ -7,7 +7,8 @@ from pymongo import MongoClient
 
 app = Flask(__name__)
 client = MongoClient()
-users = client.users
+db = client.test
+
 
 @app.route('/')
 def index():
@@ -15,7 +16,8 @@ def index():
 
 @app.route('/Users')
 def getUsers():
-	 return client.database_names()
+	 db.users.insert({"name":"Yeomans"})
+	 return db.users.find_one()
 	#return users.find_one()
 
 # @app.route('/Trial')
