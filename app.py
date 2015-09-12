@@ -3,7 +3,7 @@ import flask
 import pymongo
 import json
 import bson.json_util
-from flask import Flask, g
+from flask import Flask, g, request, render_template
 from pymongo import MongoClient
 
 
