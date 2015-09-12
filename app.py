@@ -31,7 +31,7 @@ def getUsers():
 	print "Users"
 	print users
 	print "Restock"
-	print db.restock.find()
+	print client.restock.find()
 	print "Fridge"
 	print fridge
 	print "Stock"
