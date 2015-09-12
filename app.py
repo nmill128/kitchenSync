@@ -15,17 +15,17 @@ def index():
 
 @app.route('/Users')
 def getUsers():
-	 return users.find()
+	 return client.database_names()
 	#return users.find_one()
 
-@app.route('/Trial')
-def getTrial():
-	return "hi"
+# @app.route('/Trial')
+# def getTrial():
+# 	return "hi"
 
-@app.route('/Tester')
-def tryTest():
-	user = users.find_one()
-	return "hi"
+# @app.route('/Tester')
+# def tryTest():
+# 	user = users.find_one()
+# 	return "hi"
 
 if __name__=='__main__':
     app.run(port=8000)
