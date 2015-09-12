@@ -22,7 +22,7 @@ Users = 0
 
 
 def getDate(dt):
-	return dt.strftime("%m%d%Y")
+	return dt.strftime("%m%d%y")
 
 @app.route('/')
 def index():
