@@ -65,13 +65,16 @@ def checkIn():
 	ExpDate = foodRecord["exp"]
 	Amount = foodRecord["amount"]
 	Date_added = Date_updated = datetime.now()
+	status = ""
 	record = db.fridge.find_one({"nfc":long(nfc)})
 	if (not record == None):
 		db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
+		status = "Added"
 	else:
 		db.fridge.update({"amount":Amount-1})
+		status = "Used"
 	#name, expiration date, string "added"
-	jsonstr = {"Name":name, "ExpDate":getDate(ExpDate), "Status":"Added"}
+	jsonstr = {"Name":name, "ExpDate":getDate(ExpDate), "Status":status}
 	return json.dumps(jsonstr)
 
 @app.route('/CheckOut', methods = ['POST'])
