@@ -56,7 +56,7 @@ def addUser():
 def checkIn():
 	nfc = request.form["nfc"]
 	userId = request.form["userId"]
-	foodRecord = db.stock.find_one({"nfc":long(nfc)})
+	foodRecord = db.food.find_one({"nfc":long(nfc)})
 	name = foodRecord["name"]
 	upc = foodRecord["upc"]
 	category = foodRecord["Category"]
