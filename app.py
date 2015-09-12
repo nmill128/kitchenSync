@@ -64,7 +64,7 @@ def checkIn():
 	category = foodRecord["category"]
 	ExpDate = foodRecord["exp"]
 	Amount = foodRecord["amount"]
-	Date_added = Date_updated = getDate(datetime)
+	Date_added = Date_updated = getDate(datetime.date)
 	db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Brand":Brand, "Category":category, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
 	#name, expiration date, string "added"
 	jsonstr = {"Name":name, "ExpDate":ExpDate, "Status":"Added"}
