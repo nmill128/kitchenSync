@@ -99,8 +99,6 @@ def login():
 	else:
 		return "User Authentication Failed"
 
-@app.route('/dashboard')
-def 
 
 @app.route('/Stock', methods = ['Get'])
 def getStock():
