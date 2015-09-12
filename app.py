@@ -80,7 +80,7 @@ def checkOut():
 	#temp record
 	record = db.stock.find_one({"nfc":nfc})
 	name = record["name"]
-	ExpDate = 
+	ExpDate = record["exp"]
 	# Delete it from the fridge area
 	db.fridge.delete_one({"nfc":nfc})
 	#Add its info to the restock area
