@@ -24,7 +24,8 @@ def getUsers():
 	print client
 	 #db.users.insert({"name":"Yeomans"})
 	 # return db.users.find_one()
-	return client.database_names()
+	client.database_names()
+	return "turtles"
 
 # @app.route('/Trial')
 # def getTrial():
