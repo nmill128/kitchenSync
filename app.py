@@ -28,7 +28,7 @@ def getUsers():
 	 #db.users.insert({"name":"Yeomans"})
 	 # return db.users.find_one()
 	# print client.database_names()
-	print users.find_one()
+	print users.find()
 
 	return "turtles"
 
