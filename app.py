@@ -10,7 +10,6 @@ import urllib,urllib2
 
 app = Flask(__name__)
 client = MongoClient()
-users = client.Users_database
 
 
 @app.route('/')
