@@ -65,7 +65,11 @@ def checkIn():
 	ExpDate = foodRecord["exp"]
 	Amount = foodRecord["amount"]
 	Date_added = Date_updated = datetime.now()
-	db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
+	record = db.fridge.find_one({"nfc":long(nfc)})
+	if (not record == None):
+		db.fridge.insert({"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
+	else:
+		db.fridge.update({"amount":Amount-1})
 	#name, expiration date, string "added"
 	jsonstr = {"Name":name, "ExpDate":getDate(ExpDate), "Status":"Added"}
 	return json.dumps(jsonstr)
@@ -75,20 +79,15 @@ def checkOut():
 	nfc = request.form["nfc"]
 	#temp record
 	record = db.stock.find_one({"nfc":nfc})
+	name = record["name"]
+	ExpDate = 
 	# Delete it from the fridge area
 	db.fridge.delete_one({"nfc":nfc})
 	#Add its info to the restock area
 	db.restock.insert({"upc":record["upc":upc],"nfc":record["nfc":nfc],"User":record["User":user], "Date_Used":mydate.strtftime("%m%d%Y")})
 	return "Success"
 
-@app.route('/Use', methods = ['POST'])
-def useOne():
-	nfc = request.form["nfc"]
-	record = db.stock.find_one({"nfc":nfc})
-	amount = record["amount"]
-	newAmount = amount - 1;
-	db.stock.update_one({"nfc":nfc},{"amount":newAmount})
-	return 'Success'
+
 
 
 
