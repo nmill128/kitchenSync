@@ -29,19 +29,19 @@ def index():
 @app.route('/Users')
 def getUsers():
 	record = db.Users.find_one()
-	email = record["email"]
+	username = record["username"]
 	password = record["password"]
 	name = record["name"]
 	phone = record ["phone"]
 	sharing = record["sharing"]
 	EXPreminders = record["EXPreminders"]
 	friends = record["friends"]
-	jsonstr = {"email":email, "password":password, "name":name, "phone":phone, "sharing":sharing, "EXPreminders":EXPreminders, "friends":friends}
+	jsonstr = {"username":username, "password":password, "name":name, "phone":phone, "sharing":sharing, "EXPreminders":EXPreminders, "friends":friends}
 	return json.dumps(jsonstr)
 
 @app.route('/AddUser', methods = ['POST'])
 def addUser():
-	email = request.form["email"]
+	username = request.form["username"]
 	password = request.form["password"]
 	name = request.form["name"]
 	phone = request.form["phone"]
@@ -49,7 +49,7 @@ def addUser():
 	EXPreminders = request.form["EXPreminders"]
 	userId = Users
 	Users +=1
-	db.users.insert({"UserId":userId, "email":email, "password":password, "name":name, "phone":phone, "sharing":sharing, "EXPreminders":EXPreminders, "friends":{}})
+	db.users.insert({"UserId":userId, "username":username, "password":password, "name":name, "phone":phone, "sharing":sharing, "EXPreminders":EXPreminders, "friends":{}})
 	return "Success"
 
 @app.route('/CheckIn', methods = ['POST'])
@@ -88,16 +88,23 @@ def useOne():
 	db.stock.update_one({"nfc":nfc},{"amount":newAmount})
 	return 'Success'
 
-@app.route('/login', methods = ['GET'])
-def login():
-	email = request.form["email"]
-	password = request.form["password"]
-	record = db.users.find_one({"email":email})
-	if(record["password"] == password):
-		g.user = record["UserId"]
-		return json.dumps({"UserId":record["UserId"]})
-	else:
-		return "User Authentication Failed"
+
+@app.route('/<username>')
+def dashboard(username):
+	record = db.users.find_one({"username":username})
+	if(record not None):
+		return username
+
+# @app.route('/login', methods = ['GET'])
+# def login():
+# 	username = request.form["username"]
+# 	password = request.form["password"]
+# 	record = db.users.find_one({"username":username})
+# 	if(record["password"] == password):
+# 		g.user = record["UserId"]
+# 		return json.dumps({"UserId":record["UserId"]})
+# 	else:
+# 		return "User Authentication Failed"
 
 
 @app.route('/Stock', methods = ['GET'])
