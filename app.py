@@ -6,7 +6,7 @@ from pymongo import MongoClient
 
 
 app = Flask(__name__)
-app.debug = true
+app.debug = True
 try:
     client=pymongo.MongoClient()
     print "Connected successfully!!!"
