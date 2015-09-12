@@ -15,7 +15,7 @@ def index():
 
 @app.route('/Users')
 def getUsers():
-	 return "Hi"
+	 return users
 	#return users.find_one()
 
 if __name__=='__main__':
