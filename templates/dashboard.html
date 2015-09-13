@@ -292,22 +292,25 @@
                 format: 'mm/d/yyyy',
             });
 
-            $('.deleteButton').click(function(){
-                console.log(this.name);
-                var nfcid = this.name;
-                console.log(nfcid);
-                var url = "http://kitchensync.cloudapp.net/KenBapp/delete";
-                var success = function(res, moo){
-                    document.getElementById("htmlinsert").innerHTML = res;
-                };
+            var listners = function() {
+                $('.deleteButton').click(function () {
+                    console.log(this.name);
+                    var nfcid = this.name;
+                    console.log(nfcid);
+                    var url = "http://kitchensync.cloudapp.net/KenBapp/delete";
+                    var success = function (res, moo) {
+                        document.getElementById("htmlinsert").innerHTML = res;
+                        listners();
+                    };
 
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {nfc:nfcid},
-                    success: success
-                });
-            })
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {nfc: nfcid},
+                        success: success
+                    });
+                })
+            };
         });
     </script>
 </body>
