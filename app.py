@@ -37,7 +37,7 @@ def getDate(dt):
 
 @app.route('/')
 def index():
-	message = client.messages.create(to=+17038557270, from_=+17038103574,body="Hello there!")
+	message = client.sms.messages.create(to=+17038557270, from_=+17038103574,body="Hello there!")
 	return "<h1>Hi Ben!<h1>"
 
 @app.route('/<username>/dashboard')
@@ -111,7 +111,7 @@ def addOne():
 	category = foodRecord["category"]
 	ExpDate = foodRecord["exp"]
 	Amount = foodRecord["amount"]+1
-	sszie = foodRecord["ssize"]
+	ssize = foodRecord["ssize"]
 	record = db.fridge.find_one({"nfc":nfc})
 	Date_added = record["Date_added"]
 	Date_updated=datetime.now()
@@ -131,7 +131,7 @@ def subOne():
 	category = foodRecord["category"]
 	ExpDate = foodRecord["exp"]
 	Amount = foodRecord["amount"]-1
-	sszie = foodRecord["ssize"]
+	ssize = foodRecord["ssize"]
 	record = db.fridge.find_one({"nfc":nfc})
 	Date_added = record["Date_added"]
 	Date_updated=datetime.now()
