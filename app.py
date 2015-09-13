@@ -212,7 +212,7 @@ def addFriend(username):
 	friendName = request.form["friend"]
 	record = db.users.find_one({"username":username})
 	fris = []
-	if notrecord["Friends"] == None:
+	if not record["Friends"] == None:
 		for fri in record["Friends"]:
 			fris.append(fri)
 	fris.append(friendName)
