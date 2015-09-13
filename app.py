@@ -263,7 +263,17 @@ def delete(username):
 	# Delete it from the fridge area
 	db.fridge.remove({"nfc":nfc})
 	record = db.users.find_one({"username":username})
-	print record["UserId"]
+	#Add its info to the restock area
+	url = "http://api.walmartlabs.com/v1/items?apiKey=jgz3vtvr9cuwguzrzpn54nuy&upc=" + record["upc"]
+	contents=urllib2.urlopen(url).read()
+	data = json.loads(contents)
+	data = data["items"][0]
+	price = "N/A"
+	if "msrp" in data:
+		price = "{:.2f}".format(data["msrp"])
+	elif "saleprice" in data:
+		price = "{:.2f}".format(data["salePrice"])
+	db.restock.insert({"name":data["name"],"price":price,"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
    	return render_template('kitchenTable.html',stock=db.fridge.find({"UserId":('{0:.3g}'.format(record["UserId"]))}))
 
 @app.route('/<username>/restockDelete', methods = ["POST"])
