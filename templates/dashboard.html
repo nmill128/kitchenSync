@@ -298,7 +298,7 @@
                 console.log(nfcid);
                 var url = "http://kitchensync.cloudapp.net/KenBapp/delete";
                 var success = function(res, moo){
-                    document.getElementById("htmlinsert").innerText = res;
+                    document.getElementById("htmlinsert").innerHTML = res;
                 };
 
                 $.ajax({
