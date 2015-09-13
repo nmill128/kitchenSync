@@ -4,11 +4,12 @@ import pymongo
 import json
 import bson.json_util
 import os
+from twilio.rest import TwilioRestClient
 from flask import Flask, g, request, render_template
 from pymongo import MongoClient
 from datetime import datetime
 
-
+#Flask setup
 app = Flask(__name__)
 app.debug = True
 try:
@@ -18,6 +19,16 @@ except pymongo.errors.ConnectionFailure, e:
    print "Could not connect to MongoDB: %s" % e 
 db = client.test
 
+
+#Twilio stuff
+TWILIO_ACCOUNT_SID=AC7fe706b555283cfe832a73bc4e276788
+TWILIO_AUTH_TOKEN=d1e515b4d1a316ca7fb4a40ace251d8e
+client = TwilioRestClient
+
+
+
+
+#User Counter
 Users = 0
 
 
@@ -26,7 +37,14 @@ def getDate(dt):
 
 @app.route('/')
 def index():
+	message = client.messages.create(to=+17038557270, from=+17038103574,body="Hello there!")
     return "<h1>Hi Ben!<h1>"
+
+@app.route('/<username>/dashboard')
+def userDash(username):
+	record = db.users.find_one({"username":username})
+
+	return render_template('dashboard.html',items=db.fridge.find())
 
 @app.route('/Users')
 def getUsers():
@@ -96,6 +114,7 @@ def addOne():
 	sszie = foodRecord["ssize"]
 	record = db.fridge.find_one({"nfc":nfc})
 	Date_added = record["Date_added"]
+	Date_updated=datetime.now()
 	status = ""
 	print "Adding"
 	db.fridge.update({"nfc":nfc},{"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "amount":Amount, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
@@ -115,6 +134,7 @@ def subOne():
 	sszie = foodRecord["ssize"]
 	record = db.fridge.find_one({"nfc":nfc})
 	Date_added = record["Date_added"]
+	Date_updated=datetime.now()
 	status = ""
 	print "Subtracting"
 	db.fridge.update({"nfc":nfc},{"UserId": userId,"nfc":nfc, "upc":upc, "Name":name, "Category":category, "amount":Amount, "ExpDate":ExpDate, "Date_added":Date_added, "Date_updated":Date_updated})
