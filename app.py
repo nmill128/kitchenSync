@@ -234,7 +234,7 @@ def requestFood(username):
 		f = db.users.find_one({"username":friend})
 		number = "1"+f["Phone"]
 		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["Name"]+ " needs " + name)
-	return message
+	return "success"
 
 @app.route('/twilio/sms', methods = ["POST"])
 def response():
