@@ -293,12 +293,12 @@
             var listners = function() {
                 $('.deleteButton').click(function () {
                     var nfcid = this.name;
-                    var url = "http://kitchensync.cloudapp.net/KenBapp/delete";
+                    var url = "http://kitchensync.cloudapp.net/{{ username }}/delete";
                     var success = function (res, moo) {
                         document.getElementById("htmlinsert").innerHTML = res;
                         listners();
 
-                        var url = "http://kitchensync.cloudapp.net/KenBapp/restockLoad";
+                        var url = "http://kitchensync.cloudapp.net/{{ username }}/restockLoad";
                         $.ajax({
                             type: "GET",
                             url: url,
@@ -322,7 +322,7 @@
             var listnersFriends = function() {
                 $('.deleteButtonFriends').click(function () {
                     var friend = this.name;
-                    var url = "http://kitchensync.cloudapp.net/KenBapp/removeFriend";
+                    var url = "http://kitchensync.cloudapp.net/{{ username }}/removeFriend";
                     var success = function (res, moo) {
                         document.getElementById("htmlinsertfriends").innerHTML = res;
                         listnersFriends();
@@ -341,7 +341,7 @@
             $('#addFriendButton').click(function() {
                 var friendUser = document.getElementById("friend_name").value;
                 console.log(friendUser);
-                var url = "http://kitchensync.cloudapp.net/KenBapp/addFriend";
+                var url = "http://kitchensync.cloudapp.net/{{ username }}/addFriend";
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -358,7 +358,7 @@
             var listnersRe = function() {
                 $('.deleteButtonRe').click(function () {
                     var nfcid = this.name;
-                    var url = "http://kitchensync.cloudapp.net/KenBapp/restockDelete";
+                    var url = "http://kitchensync.cloudapp.net/{{ username }}/restockDelete";
                     var success = function (res, moo) {
                         document.getElementById("htmlinsertre").innerHTML = res;
                         listnersRe();
@@ -373,7 +373,7 @@
                 });
                 $('.requestre').click(function(){
                     var nfcid = this.name;
-                    var url = "http://kitchensync.cloudapp.net/KenBapp/requestFood";
+                    var url = "http://kitchensync.cloudapp.net/{{ username }}/requestFood";
                     var success = function (res) {
                         alert(res);
                     };
