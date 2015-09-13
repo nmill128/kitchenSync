@@ -203,6 +203,7 @@ def checkOut():
 	return json.dumps(jsonstr)
 
 @app.route('/<username>/delete', methods = ["POST"])
+@crossdomain(origin='*')
 def delete(username):
 	nfc = request.form["nfc"]
 	# Delete it from the fridge area
@@ -212,6 +213,7 @@ def delete(username):
    	return render_template('kitchenTable.html',stock=db.fridge.find({"UserId":('{0:.3g}'.format(record["UserId"]))}))
 
 @app.route('/<username>/restockDelete', methods = ["POST"])
+@crossdomain(origin='*')
 def restockDelete(username):
 	nfc = request.form["nfc"]
 	# Delete it from the fridge area
@@ -246,6 +248,7 @@ def addFriend(username):
 	return "Success"
 
 @app.route('/<username>/removeFriend', methods = ["POST"])
+@crossdomain(origin='*')
 def removeFriend(username):
 	friendName = request.form["friend"]
 	record = db.users.find_one({"username":username})
