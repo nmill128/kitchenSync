@@ -216,6 +216,7 @@ def response():
 	userId = record["UserId"]
 	foods = db.restock.find({"UserId":userId})
 	string = "You are out of:\n"
+	print foods
 	for f in foods:
 		name = f["name"]
 		date_used = f["Date_Used"] 
