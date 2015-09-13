@@ -227,7 +227,7 @@ def requestFood(username):
 	name = foodRecord["name"]
 	print name 
 	record = db.users.find_one({"username":username})
-	friends = record["friends"]
+	friends = record["Friends"]
 	print friends
 	for friend in friends:
 		f = db.user.find_one({"username":friend})
