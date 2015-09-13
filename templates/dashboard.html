@@ -338,7 +338,7 @@
                     data: {friend: friendUser},
                     success: function(res){
                         Materialize.toast('Friend added!', 4000);
-                        $('#friend_name').value = "";
+                        $('#friend_name').val("");
                         document.getElementById("htmlinsertfriends").innerHTML = res;
                         listnersFriends();
                     }
