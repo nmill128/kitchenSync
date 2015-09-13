@@ -211,17 +211,16 @@ def response():
 	from_number = request.values.get('From', None)
 	print from_number
 	readableNumber = from_number[2:12]
-	print readableNumber
 	record = db.users.find_one({"Phone":str(readableNumber)})
 	userId = record["UserId"]
-	print int(userId)
 	foods = db.restock.find({"UserId":str(int(userId))})
 	count = foods.count()
+	counter = 0
 	print count
 	string = "You are out of:\n"
-	while count > 0:
-		f = db.restock.find_one({"UserId":str(int(userId))},skip=count-1)
-		count -=count
+	while counter < count:
+		f = db.restock.find_one({"UserId":str(int(userId))},skip=count-counter)
+		counter +=1
 		print f
 		nfc = f["nfc"]
 		print nfc
