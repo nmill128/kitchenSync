@@ -82,7 +82,7 @@ def remindDates():
 			print r["UserId"]
 			user = db.users.find_one({"UserId":int(r["UserId"])})
 			if (not user == None) and user["EXPreminders"]:
-				number = "1"+f["Phone"]
+				number = "1"+user["Phone"]
 				string = "Your "+ r["Name"] + "expires today."
 				message = client.sms.messages.create(to=+long(number), from_=+17038103574,body=string)	
 	return(str(string+"Success"))
