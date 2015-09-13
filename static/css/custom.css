@@ -37,6 +37,7 @@ nav{
 }
 .main{
     margin-top: 25px;
+    margin-bottom: 100px;
 }
 .override.dropdown-content li>a{
     font-size: .85rem;
@@ -56,9 +57,7 @@ nav{
     nav .brand-logo{
         left: 40%;
     }
-    .main{
-        margin-bottom: 100px;
-    }
+
 }
 /* Helper */
 .no_bot_margin{
@@ -80,7 +79,11 @@ nav{
     width: 100%;
     background-color: #FFF;
 }
-
+.border_box{
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
 /* Search Bar*/
 .search_bar{
     padding: 0;
