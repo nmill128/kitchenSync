@@ -221,13 +221,20 @@ def addFriend(username):
 
 @app.route('/<username>/requestFood', methods = ["POST"])
 def requestFood(username):
-	foodName = request.form["foodName"]
+	nfc = request.form["nfc"]
+	print nfc
+	foodRecord = db.food.find_one({"nfc":long(nfc)})
+	name = foodRecord["name"]
+	print name 
 	record = db.users.find_one({"username":username})
-	friends = record["friends"]
+	friends = record["Friends"]
+	print friends
 	for friend in friends:
-		f = db.user.find_one({"username":friend})
-		number = "1"+f["phone"]
-		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["name"]+ " needs " + foodName)
+		print friend
+		f = db.users.find_one({"username":friend})
+		number = "1"+f["Phone"]
+		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["Name"]+ " needs " + name)
+	return "success"
 
 @app.route('/twilio/sms', methods = ["POST"])
 def response():
