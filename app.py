@@ -212,8 +212,9 @@ def addFriend(username):
 	friendName = request.form["friend"]
 	record = db.users.find_one({"username":username})
 	fris = []
-	for fri in record["Friends"]:
-		fris.append(fri)
+	if notrecord["Friends"] == None:
+		for fri in record["Friends"]:
+			fris.append(fri)
 	fris.append(friendName)
 	db.users.update({"UserId":record["UserId"]},{"UserId":record["UserId"], "username":record["username"], "Password":record["Password"], "Name":record["Name"], "Phone":record["Phone"], "Sharing":record["Sharing"], "EXPreminders":record["EXPreminders"], "Friends":fris})
 	return "Success"
