@@ -4,12 +4,35 @@ import pymongo
 import json
 import bson.json_util
 import os
+import urllib2
+import schedule
+import time
 from twilio.rest import TwilioRestClient
 from twilio import twiml
 from flask import Flask, g, request, render_template, redirect
 from pymongo import MongoClient
 from datetime import datetime
-import urllib2
+
+
+def remindDates():
+    records = db.fridge.find()
+    string=""
+    for r in records:
+    	string=""
+    	if (r["ExpDate"].day() == datetime.today()):
+    		user = db.users.find_one({"UserId":r["UserId"]})
+    		if user["EXPreminders"]:
+    			number = "1"+f["Phone"]
+			    string = "Your "+ r["Name"] + "expires today."
+			    message = client.sms.messages.create(to=+long(number), from_=+17038103574,body=string)	
+	return(str(mes))
+
+
+schedule.every().day.at("08:00").do(job)
+
+while True:
+    schedule.run_pending()
+    time.sleep(60) # wait one minute
 
 #Flask setup
 app = Flask(__name__,static_url_path='/static')
