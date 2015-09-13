@@ -52,10 +52,11 @@ def index():
 @app.route('/<username>/dashboard')
 def userDash(username):
 	record = db.users.find_one({"username":username})
+
 	print record
 	
 
-	return render_template('dashboard.html',stock=db.fridge.find(),restock=db.restock.find(),username=username)
+	return render_template('dashboard.html',stock=db.fridge.find({"UserId":record["UserId"]}),restock=db.restock.find({"UserId":record["UserId"]}),username=username)
 
 @app.route('/Users')
 def getUsers():
