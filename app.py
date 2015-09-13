@@ -226,6 +226,7 @@ def response():
 		nfc = f["nfc"]
 		print nfc
 		name = db.food.find_one({"nfc":nfc})
+		print name
 		date_used = f["Date_Used"] 
 		print date_used
 		string = string +name + " Used on: " + date_used.strftime("%m%d%y") +"\n"
