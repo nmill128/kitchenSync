@@ -219,7 +219,7 @@ def response():
 	print count
 	string = "You are out of:\n"
 	while counter < count:
-		f = db.restock.find_one({"UserId":str(int(userId))},skip=count-counter)
+		f = db.restock.find_one({"UserId":str(int(userId))},skip=counter)
 		counter +=1
 		print f
 		nfc = f["nfc"]
