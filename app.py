@@ -11,7 +11,7 @@ from twilio.rest import TwilioRestClient
 from twilio import twiml
 from flask import Flask, g, request, render_template, redirect
 from pymongo import MongoClient
-from datetime import datetime
+from datetime import datetime,date
 
 
 
@@ -77,7 +77,7 @@ def remindDates():
 	string=""
 	for r in records:
 		string=""
-		if (r["ExpDate"].day() == datetime.today()):
+		if (r["ExpDate"].day == date.today().day):
 			user = db.users.find_one({"UserId":r["UserId"]})
 			if user["EXPreminders"]:
 				number = "1"+f["Phone"]
