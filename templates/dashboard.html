@@ -325,24 +325,25 @@
                         success: success
                     })
                 });
-                $('#addFriendButton').click(function() {
-                    var friendUser = document.getElementById("friend_name").value;
-                    console.log(friendUser);
-                    var url = "http://kitchensync.cloudapp.net/KenBapp/addFriend";
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        data: {friend: friendUser},
-                        success: function(res){
-                            Materialize.toast('Friend added!', 4000);
-                            $('#friend_name').reset();
-                            document.getElementById("htmlinsertfriends").innerHTML = res;
-                            listnersFriends();
-                        }
-                    });
-                });
             };
             listnersFriends();
+
+            $('#addFriendButton').click(function() {
+                var friendUser = document.getElementById("friend_name").value;
+                console.log(friendUser);
+                var url = "http://kitchensync.cloudapp.net/KenBapp/addFriend";
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {friend: friendUser},
+                    success: function(res){
+                        Materialize.toast('Friend added!', 4000);
+                        $('#friend_name').reset();
+                        document.getElementById("htmlinsertfriends").innerHTML = res;
+                        listnersFriends();
+                    }
+                });
+            });
 
             var listnersRe = function() {
                 $('.deleteButtonRe').click(function () {
