@@ -74,7 +74,7 @@ def getUsers():
 @app.route('/exp')
 def remindDates():
     records = db.fridge.find()
-    string=""
+	string=""
     for r in records:
     	string=""
     	if (r["ExpDate"].day() == datetime.today()):
