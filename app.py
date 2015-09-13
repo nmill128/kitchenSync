@@ -165,9 +165,9 @@ def checkOut():
 	#Add its info to the restock area
 	url = "http://api.walmartlabs.com/v1/items?apiKey=jgz3vtvr9cuwguzrzpn54nuy&upc=" + record["upc"]
 	contents=urllib2.urlopen(url).read()
-    data = json.loads(contents)
-    data = data["items"]
-    price = "N/A"
+	data = json.loads(contents)
+	data = data["items"]
+	price = "N/A"
     if "msrp" in data:
     	price = data["msrp"]
     elif "saleprice" in data:
