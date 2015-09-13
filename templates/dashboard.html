@@ -333,7 +333,7 @@
                         type: "POST",
                         url: url,
                         data: {friend: friendUser},
-                        success: function(){
+                        success: function(res){
                             Materialize.toast('Friend added!', 4000);
                             $('#friend_name').reset();
                             document.getElementById("htmlinsertfriends").innerHTML = res;
