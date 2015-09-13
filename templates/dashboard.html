@@ -281,23 +281,6 @@
                 format: 'mm/d/yyyy',
             });
 
-            $('#addFriendButton').click(function() {
-                var friendUser = document.getElementById("friend_name").value;
-                console.log(friendUser);
-                var url = "http://kitchensync.cloudapp.net/KenBapp/addFriend";
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: {friend: friendUser},
-                    success: function(){
-                        Materialize.toast('Friend added!', 4000);
-                        $('#friend_name').reset();
-                    },
-                    error: function(){
-                        Materialize.toast('Sorry! Could not add a friend at this time.', 4000);
-                    }
-                });
-            });
 
 
             var showErrorAdd = function(){
@@ -341,6 +324,22 @@
                         data: {friend: friend},
                         success: success
                     })
+                });
+                $('#addFriendButton').click(function() {
+                    var friendUser = document.getElementById("friend_name").value;
+                    console.log(friendUser);
+                    var url = "http://kitchensync.cloudapp.net/KenBapp/addFriend";
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {friend: friendUser},
+                        success: function(){
+                            Materialize.toast('Friend added!', 4000);
+                            $('#friend_name').reset();
+                            document.getElementById("htmlinsertfriends").innerHTML = res;
+                            listnersFriends();
+                        }
+                    });
                 });
             };
             listnersFriends();

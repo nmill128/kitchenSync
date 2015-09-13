@@ -290,7 +290,7 @@ def addFriend(username):
 			fris.append(fri)
 	fris.append(friendName)
 	db.users.update({"UserId":record["UserId"]},{"UserId":record["UserId"], "username":record["username"], "Password":record["Password"], "Name":record["Name"], "Phone":record["Phone"], "Sharing":record["Sharing"], "EXPreminders":record["EXPreminders"], "Friends":fris})
-	return "Success"
+   	return render_template('friendTable.html', friends=fris)
 
 @app.route('/<username>/removeFriend', methods = ["POST"])
 @crossdomain(origin='*')
