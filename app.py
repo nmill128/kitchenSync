@@ -218,7 +218,7 @@ def response():
 	counter = 0
 	print count
 	string = "You are out of:\n"
-	while counter < count:
+	while counter <= count:
 		f = db.restock.find_one({"UserId":str(int(userId))},skip=counter)
 		counter +=1
 		print counter
