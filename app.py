@@ -197,27 +197,27 @@ def restockDelete(username):
 @app.route('/<username>/shareTrue', methods = ['POST'])
 def shareTrue(username):
 	userId = request.form["userId"]
-	record = db.user.find_one({"username":username})
+	record = db.users.find_one({"username":username})
 	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":True, "EXPreminders":record["EXPreminders"], "friends":record[friends]})
 
 
 @app.route('/<username>/shareFalse', methods = ['POST'])
 def shareFalse(username):
 	userId = request.form["userId"]
-	record = db.user.find_one({"username":username})
+	record = db.users.find_one({"username":username})
 	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":False, "EXPreminders":record["EXPreminders"], "friends":record[friends]})
 
 @app.route('/<username>/addFriend', methods = ["POST"])
 def addFriend(username):
 	friendName = request.form["friend"]
-	record = db.user.find_one({"username":username})
+	record = db.users.find_one({"username":username})
 	db.users.insert({"UserId":record["UserId"], "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":record["sharing"], "EXPreminders":record["EXPreminders"], "Friends":record["Friends"].append(friendName)})
 
 
 # @app.route('/<username>/requestFood', methods = ["POST"])
 # def requestFood(username):
 # 	foodName = request.form["foodName"]
-# 	record = db.user.find_one({"username":username})
+# 	record = db.users.find_one({"username":username})
 # 	friends = record["friends"]
 # 	for friend in friends:
 # 		f = db.user.find_one("username":friend)
