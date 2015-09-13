@@ -9,6 +9,7 @@ from twilio import twiml
 from flask import Flask, g, request, render_template
 from pymongo import MongoClient
 from datetime import datetime
+import urllib2
 
 #Flask setup
 app = Flask(__name__,static_url_path='/static')
@@ -162,7 +163,16 @@ def checkOut():
 	# Delete it from the fridge area
 	db.fridge.remove({"nfc":nfc})
 	#Add its info to the restock area
-	db.restock.insert({"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
+	url = "http://api.walmartlabs.com/v1/items?apiKey=jgz3vtvr9cuwguzrzpn54nuy&upc=" + record["upc"]
+    contents = urllib2.urlopen(url).read()
+    data = json.loads(contents)
+    data = data["items"]
+    price = "N/A"
+    if "msrp" in data:
+    	price = data["msrp"]
+    elif "saleprice" in data:
+    	price = data["salePrice"]
+	db.restock.insert({"name":data["name"],"price":price,"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
 	jsonstr = {"name":name, "string":string}
 	return json.dumps(jsonstr)
 

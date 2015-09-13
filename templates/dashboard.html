@@ -143,16 +143,16 @@
                 </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="restockTable">
                 {% for item in restock %}
                 <tr>
                     <td>
                         <input type="checkbox" id="check-{{ item.name }}" />
                         <label for="check-{{ item.name }}"></label>
                     </td>
-                    <td class="td_left_text">{{ item.name }} </td>
+                    <td class="td_left_text">{{ item.name }}</td>
                     <td>{{ item.Date_Used.strftime('%b %d') }}</td>
-                    <td></td>
+                    <td>{{ item.msrp }}</td>
                     <td class="tr_nav">
                         <a href="#" class="right"><i class="material-icons blue-text">note_add</i></a>
                         <a href="#" class="right"><i class="material-icons red-text">delete</i></a>
@@ -244,6 +244,8 @@
 
     <script>
         $(document).ready(function(){
+
+
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal-trigger').leanModal();
 
