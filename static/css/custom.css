@@ -67,7 +67,7 @@ nav{
     margin-top: 0;
 }
 .no_margin{
-    margin: 0;
+    margin: 0 !important;
 }
 .no_padding_left{
     padding-left: 0 !important;
