@@ -162,7 +162,7 @@
                         </td>
                         <td class="td_left_text">{{ item.name }}</td>
                         <td>{{ item.Date_Used.strftime('%b %d') }}</td>
-                        <td>{{ item.price }}</td>
+                        <td>{{ "{:.2f}".format(item.price) }}</td>
                         <td class="tr_nav hide-on-small-only">
                             <a href="#" class="right requestre" name="{{ item.nfc }}"><i class="material-icons blue-text">note_add</i></a>
                             <a href="#" name="{{ item.nfc }}" class="deleteButtonRe right"><i class="material-icons red-text">delete</i></a>
@@ -244,32 +244,14 @@
                 </div>
 
                 <div class="col s12 m6">
-                    <ul class="collection">
-                        <li class="collection-item avatar">
-                            <img src="images/yuna.jpg" alt="" class="circle">
-                            <span class="title">Title</span>
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
-                        </li>
+                    <ul class="collection" id="htmlinsertfriends">
+                        {{ for item in friends }}
                         <li class="collection-item avatar">
                             <i class="material-icons circle">perm_identity</i>
-                            <span class="title">Title</span>
-
-                            <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                            <span class="title">{{ item }}</span>
+                            <a href="#!" name="{{ item }}" class="secondary-content"><i class="material-icons">delete</i></a>
                         </li>
-                        <li class="collection-item avatar">
-                            <i class="material-icons circle blue">perm_identity</i>
-                            <span class="title">Title</span>
-
-                            <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
-                        </li>
-                        <li class="collection-item avatar">
-                            <i class="material-icons circle red">perm_identity</i>
-                            <span class="title">Title</span>
-                            <p>First Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
-                        </li>
+                        {{ end for }}
                     </ul>
                 </div>
 
@@ -343,6 +325,25 @@
                 })
             };
             listners();
+
+            var listnersFriends = function() {
+                $('.deleteButton').click(function () {
+                    var friend = this.name;
+                    var url = "http://kitchensync.cloudapp.net/KenBapp/removeFriend";
+                    var success = function (res, moo) {
+                        document.getElementById("htmlinsertfriends").innerHTML = res;
+                        listnersFriends();
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {friend: friend},
+                        success: success
+                    });
+                })
+            };
+            listnersFriends();
 
             var listnersRe = function() {
                 $('.deleteButtonRe').click(function () {
