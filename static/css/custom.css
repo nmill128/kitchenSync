@@ -56,6 +56,9 @@ nav{
     nav .brand-logo{
         left: 40%;
     }
+    main{
+        margin-bottom: 100px;
+    }
 }
 /* Helper */
 .no_bot_margin{
