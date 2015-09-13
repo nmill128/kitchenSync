@@ -221,9 +221,13 @@ def addFriend(username):
 
 @app.route('/<username>/requestFood', methods = ["POST"])
 def requestFood(username):
-	foodName = request.form["foodName"]
+	nfc = request.form["nfc"]
+	foodRecord = db.fridge.find_one({"nfc":nfc})
+	name = foodRecord["name"]
+	print name 
 	record = db.users.find_one({"username":username})
 	friends = record["friends"]
+	print friends
 	for friend in friends:
 		f = db.user.find_one({"username":friend})
 		number = "1"+f["phone"]
