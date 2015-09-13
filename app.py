@@ -210,9 +210,9 @@ def addFriend(username):
 def response():
 	from_number = request.values.get('From', None)
 	print from_number
-	record = db.users.find_one({"phone":from_number})
 	readableNumber = from_number[2:12]
 	print readableNumber
+	record = db.users.find_one({"phone":readableNumber})
 	userId = record["UserId"]
 	foods = db.restock.find({"userId":userId})
 	string = "You are out of:\n"
