@@ -182,6 +182,7 @@ def delete(username):
 	# Delete it from the fridge area
 	db.fridge.remove({"nfc":nfc})
 	record = db.users.find_one({"username":username})
+	print str(record["UserId"])
    	return render_template('kitchenTable.html',stock=db.fridge.find({"UserId":str(record["UserId"])}))
 
 @app.route('/<username>/restockDelete', methods = ["POST"])
