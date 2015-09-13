@@ -177,20 +177,20 @@ def delete(username):
 def shareTrue(username):
 	userId = request.form["userId"]
 	record = db.user.find_one({"username":username})
-	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":True, "EXPreminders":record["EXPreminders"], "friends":record[friends])
+	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":True, "EXPreminders":record["EXPreminders"], "friends":record[friends]})
 
 
 @app.route('/<username>/shareFalse', methods = ['POST'])
 def shareFalse(username):
 	userId = request.form["userId"]
 	record = db.user.find_one({"username":username})
-	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":False, "EXPreminders":record["EXPreminders"], "friends":record[friends])
+	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":False, "EXPreminders":record["EXPreminders"], "friends":record[friends]})
 
 @app.route('/<username>/addFriend', methods = ["POST"])
 def addFriend(username):
 	friendName = request.form["friend"]
 	record = db.user.find_one({"username":username})
-	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":record["sharing"], "EXPreminders":record["EXPreminders"], "friends":record[friends].append(friendName))
+	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":record["sharing"], "EXPreminders":record["EXPreminders"], "friends":record[friends].append(friendName)})
 
 
 @app.route('/<username>')
