@@ -44,8 +44,9 @@ def index():
 def userDash(username):
 	record = db.users.find_one({"username":username})
 	print record
+	return "STOP FUCKING AROUND"
 
-	return render_template('dashboard.html',stock=db.fridge.find(),restock=db.restock.find())
+	#return render_template('dashboard.html',stock=db.fridge.find(),restock=db.restock.find())
 
 @app.route('/Users')
 def getUsers():
