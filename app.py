@@ -212,7 +212,7 @@ def response():
 	print from_number
 	readableNumber = from_number[2:12]
 	print readableNumber
-	record = db.users.find_one({"phone":str(readableNumber)})
+	record = db.users.find_one({"Phone":str(readableNumber)})
 	userId = record["UserId"]
 	foods = db.restock.find({"userId":userId})
 	string = "You are out of:\n"
