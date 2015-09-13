@@ -51,7 +51,10 @@ nav{
         font-size: 25px;
     }
     .dropdown-button{
-        padding-left: 20px;
+        padding-left: 15px;
+    }
+    nav .brand-logo{
+        left: 40%;
     }
 }
 /* Helper */
