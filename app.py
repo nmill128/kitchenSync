@@ -168,7 +168,9 @@ def checkOut():
 
 @app.route('/<username>/delete', methods = ["POST"])
 def delete(username):
+	print "delete"
 	nfc = request.form["nfc"]
+	print nfc
 	# Delete it from the fridge area
 	db.fridge.remove({"nfc":nfc})
 # <<<<<<< HEAD
