@@ -224,8 +224,10 @@ def response():
 		count -=count
 		print f
 		nfc = f["nfc"]
+		print nfc
 		name = db.food.find_one({"nfc":nfc})
 		date_used = f["Date_Used"] 
+		print date_used
 		string = string +name + " Used on: " + date_used +"\n"
 	
 	r = twiml.Response()
