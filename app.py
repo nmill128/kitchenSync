@@ -182,7 +182,7 @@ def delete(username):
 	# Delete it from the fridge area
 	db.fridge.remove({"nfc":nfc})
 	record = db.users.find_one({"username":username})
-   	return render_template('kitchenTable.html',stock=db.fridge.find({"UserId":record["UserId"]}))
+   	return render_template('kitchenTable.html',stock=db.fridge.find({"UserId":str(record["UserId"])}))
 
 @app.route('/<username>/restockDelete', methods = ["POST"])
 def restockDelete(username):
@@ -191,7 +191,7 @@ def restockDelete(username):
 	print nfc
 	db.restock.remove({"nfc":nfc})
 	record = db.users.find_one({"username":username})
-   	return render_template('restockTable.html',restock=db.restock.find({"UserId":record["UserId"]}))
+   	return render_template('restockTable.html',restock=db.restock.find({"UserId":str(record["UserId"])}))
 	
 @app.route('/<username>/shareTrue', methods = ['POST'])
 def shareTrue(username):
