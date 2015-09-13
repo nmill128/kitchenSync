@@ -151,8 +151,11 @@ def subOne():
 @app.route('/CheckOut', methods = ['POST'])
 def checkOut():
 	nfc = request.form["nfc"]
+	userId = request.form["userId"]
+	print nfc
+	print userId
 	#temp record
-	record = db.fridge.find_one({"nfc":long(nfc)})
+	record = db.fridge.find_one({"nfc":long(nfc),"UserId":userId})
 	name = record["name"]
 	string = "Success"
 	# Delete it from the fridge area
