@@ -1,12 +1,26 @@
-{% for item in stock %}
-<tr>
-    <td class="td_left_text">{{ item.Name }}</td>
-    <td>{{ item.Date_added.strftime('%b %d') }}</td>
-    <td>{{ item.amount }}</td>
-    <td>{{ item.ExpDate.strftime('%b %d') }}</td>
-    <td class="tr_nav">
-        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
-        <a name="{{ item.nfc }}" href="#!" class="deleteButton right"><i class="material-icons red-text">delete</i></a>
-    </td>
-</tr>
-{% endfor %}
+<table class="white striped centered">
+    <thead>
+    <tr>
+        <th class="td_left_text" data-field="name" >Name</th>
+        <th data-field="date-add">Date Added</th>
+        <th data-field="pricing">Serving</th>
+        <th data-field="date-expire">Date Expire</th>
+        <th data-field="nav"></th>
+    </tr>
+    </thead>
+
+    <tbody id="kitchenTable">
+    {% for item in stock %}
+    <tr>
+        <td class="td_left_text">{{ item.Name }}</td>
+        <td>{{ item.Date_added.strftime('%b %d') }}</td>
+        <td>{{ item.amount }}</td>
+        <td>{{ item.ExpDate.strftime('%b %d') }}</td>
+        <td class="tr_nav">
+            <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
+            <a name="{{ item.nfc }}" href="#!" class="deleteButton right"><i class="material-icons red-text">delete</i></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
