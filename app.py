@@ -92,7 +92,7 @@ def checkIn():
 	status = ""
 	record = db.fridge.find_one({"nfc":nfc})
 	listRec = db.restock.find_one({"upc":upc})
-	if (not listReck==None):
+	if (not listRec==None):
 		db.restock.remove({"upc":upc, "UserId":('{0:.3g}'.format(record["UserId"]))})
 	print nfc
 	if (not record == None):
