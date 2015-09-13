@@ -225,7 +225,7 @@ def requestFood(username):
 	record = db.users.find_one({"username":username})
 	friends = record["friends"]
 	for friend in friends:
-		f = db.user.find_one("username":friend)
+		f = db.user.find_one({"username":friend})
 		number = "1"+f["phone"]
 		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["name"]+ " needs " + foodName)
 
