@@ -191,7 +191,7 @@ def restockDelete(username):
 	print nfc
 	db.restock.remove({"nfc":nfc})
 	record = db.users.find_one({"username":username})
-   	return render_template('restockTable.html',stock=db.restock.find({"UserId":record["UserId"]}))
+   	return render_template('restockTable.html',restock=db.restock.find({"UserId":record["UserId"]}))
 	
 @app.route('/<username>/shareTrue', methods = ['POST'])
 def shareTrue(username):
