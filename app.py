@@ -168,18 +168,20 @@ def checkOut():
 
 @app.route('/<username>/delete', methods = ["POST"])
 def delete(username):
-
 	nfc = request.form["nfc"]
-	record = db.fridge.find_one({"nfc":nfc})
-	name = record["Name"]
-	string = "Success"
 	# Delete it from the fridge area
 	db.fridge.remove({"nfc":nfc})
-	#Add its info to the restock area
-	db.restock.insert({"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
-	jsonstr = {"name":name, "string":string}
-	return json.dumps(jsonstr)
+# <<<<<<< HEAD
+# 	#Add its info to the restock area
+# 	db.restock.insert({"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
+# 	jsonstr = {"name":name, "string":string}
+# 	return json.dumps(jsonstr)
 
+# =======
+	record = db.users.find_one({"username":username})
+   	return render_template('kitchenTable.html',stock=db.fridge.find())
+	
+# >>>>>>> 3fd07d98cc5a111361d67077671bcc6155c1f46b
 @app.route('/<username>/shareTrue', methods = ['POST'])
 def shareTrue(username):
 	userId = request.form["userId"]
@@ -198,6 +200,7 @@ def addFriend(username):
 	friendName = request.form["friend"]
 	record = db.user.find_one({"username":username})
 	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":record["sharing"], "EXPreminders":record["EXPreminders"], "friends":record[friends].append(friendName)})
+
 
 @app.route('/<username>/requestFood', methods = ["POST"])
 def requestFood(username):
