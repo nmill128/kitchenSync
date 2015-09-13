@@ -166,7 +166,7 @@ def checkOut():
 	url = "http://api.walmartlabs.com/v1/items?apiKey=jgz3vtvr9cuwguzrzpn54nuy&upc=" + record["upc"]
 	contents=urllib2.urlopen(url).read()
 	data = json.loads(contents)
-	data = data["items"]
+	data = data["items"][0]
 	price = "N/A"
 	if "msrp" in data:
 		price = data["msrp"]
