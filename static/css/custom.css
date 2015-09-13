@@ -56,8 +56,8 @@ nav{
     nav .brand-logo{
         left: 40%;
     }
-    main{
-        margin-bottom: 200px;
+    .main{
+        margin-bottom: 100px;
     }
 }
 /* Helper */

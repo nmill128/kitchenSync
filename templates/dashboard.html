@@ -273,6 +273,10 @@
                 });
             });
 
+            $('#addFriendButton').click(function(){
+                Materialize.toast('Friend added!', 4000);
+                $('#friend_name').reset();
+            })
             var listners = function() {
                 $('.deleteButton').click(function () {
                     var nfcid = this.name;
