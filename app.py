@@ -215,7 +215,7 @@ def response():
 	record = db.users.find_one({"Phone":str(readableNumber)})
 	userId = record["UserId"]
 	print int(userId)
-	foods = db.restock.find({"UserId":int(userId)})
+	foods = db.restock.find({"UserId":str(int(userId))})
 	count = foods.count()
 	print count
 	string = "You are out of:\n"
