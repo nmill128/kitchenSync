@@ -222,8 +222,8 @@ def response():
 		string.append(name + " Used on: " + date_used +"\n")
 	r = twiml.Response()
 
-	r.message("Welcome to twilio!")
-	print(str(r))
+	r.message(string)
+	return(str(r))
 
 
 @app.route('/<username>')
