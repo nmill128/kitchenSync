@@ -6,7 +6,7 @@ import bson.json_util
 import os
 from twilio.rest import TwilioRestClient
 from twilio import twiml
-from flask import Flask, g, request, render_template
+from flask import Flask, g, request, render_template, redirect
 from pymongo import MongoClient
 from datetime import datetime
 import urllib2
