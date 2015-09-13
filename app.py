@@ -90,11 +90,13 @@ def getDate(dt):
 	return dt.strftime("%m%d%y")
 
 @app.route('/')
+@crossdomain(origin='*')
 def index():
 	#message = client.sms.messages.create(to=+17038557270, from_=+17038103574,body="Hello there!")
 	return redirect("/KenBapp/dashboard", code=302)
 
 @app.route('/<username>/dashboard')
+@crossdomain(origin='*')
 def userDash(username):
 	record = db.users.find_one({"username":username})
 
@@ -104,6 +106,7 @@ def userDash(username):
 	return render_template('dashboard.html',friends=record["Friends"],stock=db.fridge.find({"UserId":('{0:.3g}'.format(record["UserId"]))}),restock=db.restock.find({"UserId":('{0:.3g}'.format(record["UserId"]))}),username=username)
 
 @app.route('/Users')
+@crossdomain(origin='*')
 def getUsers():
 	record = db.Users.find_one()
 	username = record["username"]
@@ -118,6 +121,7 @@ def getUsers():
 
 
 @app.route('/exp')
+@crossdomain(origin='*')
 def remindDates():
 	records = db.fridge.find()
 	string=""
@@ -135,6 +139,7 @@ def remindDates():
 
 
 @app.route('/AddUser', methods = ['POST'])
+@crossdomain(origin='*')
 def addUser():
 	username = request.form["username"]
 	password = request.form["password"]
@@ -148,6 +153,7 @@ def addUser():
 	return "Success"
 
 @app.route('/CheckIn', methods = ['POST'])
+@crossdomain(origin='*')
 def checkIn():
 	nfc = request.form["nfc"]
 	userId = request.form["userId"]
@@ -180,6 +186,7 @@ def checkIn():
 	return json.dumps(jsonstr)
 
 @app.route('/Plus', methods = ['POST'])
+@crossdomain(origin='*')
 def addOne():
 	nfc = request.form["nfc"]
 	print nfc
@@ -201,6 +208,7 @@ def addOne():
 	return json.dumps(jsonstr)
 
 @app.route('/Minus', methods = ['POST'])
+@crossdomain(origin='*')
 def subOne():
 	nfc = request.form["nfc"]
 	print nfc
@@ -222,6 +230,7 @@ def subOne():
 	return json.dumps(jsonstr)
 
 @app.route('/CheckOut', methods = ['POST'])
+@crossdomain(origin='*')
 def checkOut():
 	nfc = request.form["nfc"]
 	userId = request.form["userId"]
@@ -275,12 +284,14 @@ def shareTrue(username):
 
 
 @app.route('/<username>/shareFalse', methods = ['POST'])
+@crossdomain(origin='*')
 def shareFalse(username):
 	userId = request.form["userId"]
 	record = db.users.find_one({"username":username})
 	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":False, "EXPreminders":record["EXPreminders"], "friends":record[friends]})
 
 @app.route('/<username>/addFriend', methods = ["POST"])
+@crossdomain(origin='*')
 def addFriend(username):
 	friendName = request.form["friend"]
 	record = db.users.find_one({"username":username})
@@ -306,6 +317,7 @@ def removeFriend(username):
    	return render_template('friendTable.html', friends=fris)
 
 @app.route('/<username>/requestFood', methods = ["POST"])
+@crossdomain(origin='*')
 def requestFood(username):
 	nfc = request.form["nfc"]
 	sent= False
@@ -331,6 +343,7 @@ def requestFood(username):
 	return "Request Sent"
 
 @app.route('/twilio/sms', methods = ["POST"])
+@crossdomain(origin='*')
 def response():
 	from_number = request.values.get('From', None)
 	print from_number
