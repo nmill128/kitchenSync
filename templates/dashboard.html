@@ -144,54 +144,15 @@
                 </thead>
 
                 <tbody>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="check1" />
-                        <label for="check1"></label>
-                    </td>
-                    <td class="td_left_text">Malk</td>
-                    <td>SEP 1</td>
-                    <td>$6.00</td>
-                    <td class="tr_nav">
-                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
-                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="check2" />
-                        <label for="check2"></label>
-                    </td>
-                    <td class="td_left_text">Nugyo Bar White Yogurt </td>
-                    <td>SEP 09</td>
-                    <td>$2.00</td>
-                    <td class="tr_nav">
-                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
-                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="check3" />
-                        <label for="check3"></label>
-                    </td>
-                    <td class="td_left_text">Black Bean and Brown Rice </td>
-                    <td>SEP 12</td>
-                    <td>$5.00</td>
-                    <td class="tr_nav">
-                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
-                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
-                    </td>
-                </tr>
                 {% for item in restock %}
                 <tr>
                     <td>
                         <input type="checkbox" id="check-{{ item.name }}" />
                         <label for="check-{{ item.name }}"></label>
                     </td>
-                    <td class="td_left_text">{{ item.Name }} </td>
+                    <td class="td_left_text">{{ item.name }} </td>
                     <td>{{ item.Date_added }}</td>
-                    <td>{{ item.price }}</td>
+                    <td></td>
                     <td class="tr_nav">
                         <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
                         <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
@@ -294,9 +255,7 @@
 
             var listners = function() {
                 $('.deleteButton').click(function () {
-                    console.log(this.name);
                     var nfcid = this.name;
-                    console.log(nfcid);
                     var url = "http://kitchensync.cloudapp.net/KenBapp/delete";
                     var success = function (res, moo) {
                         document.getElementById("htmlinsert").innerHTML = res;
