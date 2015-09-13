@@ -202,15 +202,15 @@ def addFriend(username):
 	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":record["sharing"], "EXPreminders":record["EXPreminders"], "friends":record[friends].append(friendName)})
 
 
-@app.route('/<username>/requestFood', methods = ["POST"])
-def requestFood(username):
-	foodName = request.form["foodName"]
-	record = db.user.find_one({"username":username})
-	friends = record["friends"]
-	for friend in friends:
-		f = db.user.find_one("username":friend)
-		number = "1"+f["phone"]
-		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["name"]+ " needs " + foodName)
+# @app.route('/<username>/requestFood', methods = ["POST"])
+# def requestFood(username):
+# 	foodName = request.form["foodName"]
+# 	record = db.user.find_one({"username":username})
+# 	friends = record["friends"]
+# 	for friend in friends:
+# 		f = db.user.find_one("username":friend)
+# 		number = "1"+f["phone"]
+# 		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["name"]+ " needs " + foodName)
 
 @app.route('/twilio/sms')
 def response():
