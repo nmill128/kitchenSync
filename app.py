@@ -126,7 +126,7 @@ def addOne():
 def subOne():
 	nfc = request.form["nfc"]
 	userId = request.form["userId"]
-	foodRecord = db.food.find_one({"nfc":nfc})
+	foodRecord = db.food.find_one({"nfc":long(nfc)})
 	name = foodRecord["name"]
 	upc = foodRecord["upc"]
 	category = foodRecord["category"]
