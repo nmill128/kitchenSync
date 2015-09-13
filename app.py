@@ -78,6 +78,7 @@ def remindDates():
 	for r in records:
 		string=""
 		print r["ExpDate"].day
+		print date.today().day
 		if (r["ExpDate"].day == date.today().day):
 			user = db.users.find_one({"UserId":r["UserId"]})
 			if not user == None and user["EXPreminders"]:
