@@ -292,6 +292,7 @@
             });
 
             $('.deleteButton').click(function(){
+                console.log($(this).html)
                 var nfcid = $(this).parent.name;
                 console.log(nfcid);
                 var url = "http://kitchensync.cloudapp.net/KenBapp/delete";
