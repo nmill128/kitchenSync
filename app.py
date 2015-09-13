@@ -248,6 +248,7 @@ def addFriend(username):
 @app.route('/<username>/requestFood', methods = ["POST"])
 def requestFood(username):
 	nfc = request.form["nfc"]
+	sent= False
 	print nfc
 	foodRecord = db.food.find_one({"nfc":long(nfc)})
 	name = foodRecord["name"]
@@ -259,12 +260,14 @@ def requestFood(username):
 		print friend
 		f = db.users.find_one({"username":friend})
 		UserId = f["UserId"]
-		rec = db.fridge.find_one({"UserId":UserId, "nfc":long(nfc)})
+		print UserId
+		rec = db.fridge.find_one({"UserId":str(int(UserId)), "upc":foodRecord["upc"]})
 		if not rec==None:
 			number = "1"+f["Phone"]
 			message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["Name"]+ " needs " + name)
-		else:
-			return "None of your friends have " + name+"."
+			sent = True
+	if not sent:
+		return "None of your friends have " + name+"."
 	return "Request Sent"
 
 @app.route('/twilio/sms', methods = ["POST"])
