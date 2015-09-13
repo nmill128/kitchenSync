@@ -261,7 +261,7 @@ def requestFood(username):
 		f = db.users.find_one({"username":friend})
 		UserId = f["UserId"]
 		print UserId
-		rec = db.fridge.find_one({"UserId":UserId, "upc":foodRecord["upc"]})
+		rec = db.fridge.find_one({"UserId":str(int(UserId)), "upc":foodRecord["upc"]})
 		if not rec==None:
 			number = "1"+f["Phone"]
 			message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["Name"]+ " needs " + name)
