@@ -113,9 +113,9 @@ def addOne():
 	upc = foodRecord["upc"]
 	category = foodRecord["category"]
 	ExpDate = foodRecord["exp"]
-	Amount = foodRecord["amount"]+1
 	ssize = foodRecord["ssize"]
 	record = db.fridge.find_one({"nfc":nfc})
+	Amount = record["amount"]+1
 	Date_added = record["Date_added"]
 	Date_updated=datetime.now()
 	status = ""
@@ -134,9 +134,9 @@ def subOne():
 	upc = foodRecord["upc"]
 	category = foodRecord["category"]
 	ExpDate = foodRecord["exp"]
-	Amount = foodRecord["amount"]-1
 	ssize = foodRecord["ssize"]
 	record = db.fridge.find_one({"nfc":nfc})
+	Amount = record["amount"]-1
 	Date_added = record["Date_added"]
 	Date_updated=datetime.now()
 	status = ""
