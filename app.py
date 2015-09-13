@@ -219,15 +219,15 @@ def addFriend(username):
 	db.users.update({"UserId":record["UserId"]},{"UserId":record["UserId"], "username":record["username"], "Password":record["Password"], "Name":record["Name"], "Phone":record["Phone"], "Sharing":record["Sharing"], "EXPreminders":record["EXPreminders"], "Friends":fris})
 	return "Success"
 
-# @app.route('/<username>/requestFood', methods = ["POST"])
-# def requestFood(username):
-# 	foodName = request.form["foodName"]
-# 	record = db.users.find_one({"username":username})
-# 	friends = record["friends"]
-# 	for friend in friends:
-# 		f = db.user.find_one("username":friend)
-# 		number = "1"+f["phone"]
-# 		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["name"]+ " needs " + foodName)
+@app.route('/<username>/requestFood', methods = ["POST"])
+def requestFood(username):
+	foodName = request.form["foodName"]
+	record = db.users.find_one({"username":username})
+	friends = record["friends"]
+	for friend in friends:
+		f = db.user.find_one({"username":friend})
+		number = "1"+f["phone"]
+		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["name"]+ " needs " + foodName)
 
 @app.route('/twilio/sms', methods = ["POST"])
 def response():
