@@ -245,6 +245,18 @@ def addFriend(username):
 	db.users.update({"UserId":record["UserId"]},{"UserId":record["UserId"], "username":record["username"], "Password":record["Password"], "Name":record["Name"], "Phone":record["Phone"], "Sharing":record["Sharing"], "EXPreminders":record["EXPreminders"], "Friends":fris})
 	return "Success"
 
+@app.route('/<username>/removeFriend', methods = ["POST"])
+def removeFriend(username):
+	friendName = request.form["friend"]
+	record = db.users.find_one({"username":username})
+	fris = []
+	if not record["Friends"] == None:
+		for fri in record["Friends"]:
+			if not fri == friendName:
+				fris.append(fri)
+	db.users.update({"UserId":record["UserId"]},{"UserId":record["UserId"], "username":record["username"], "Password":record["Password"], "Name":record["Name"], "Phone":record["Phone"], "Sharing":record["Sharing"], "EXPreminders":record["EXPreminders"], "Friends":fris})
+	return "Success"
+
 @app.route('/<username>/requestFood', methods = ["POST"])
 def requestFood(username):
 	nfc = request.form["nfc"]
