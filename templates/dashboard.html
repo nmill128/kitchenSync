@@ -142,7 +142,7 @@
                         <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
                     </td>
                 </tr>
-                {% for item in items %}
+                {% for item in stock %}
                 <tr>
                     <td class="td_left_text">{{ item.name }}</td>
                     <td>{{ item.dateAdded }}</td>
@@ -212,6 +212,21 @@
                         <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
                     </td>
                 </tr>
+                {% for item in restock %}
+                <tr>
+                    <td>
+                        <input type="checkbox" id="check-{{ item.name }}" />
+                        <label for="check-{{ item.name }}"></label>
+                    </td>
+                    <td class="td_left_text">{{ item.name }} </td>
+                    <td>{{ item.dateAdded }}</td>
+                    <td>{{ item.price }}</td>
+                    <td class="tr_nav">
+                        <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
+                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
+                    </td>
+                </tr>
+                {% endfor %}
                 </tbody>
             </table>
 
