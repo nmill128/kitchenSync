@@ -257,6 +257,7 @@
 
             $('#addFriendButton').click(function() {
                 var friendUser = document.getElementById("friend_name").value;
+                console.log(friendUser);
                 var url = "http://kitchensync.cloudapp.net/KenBapp/addFriend";
                 $.ajax({
                     type: "POST",
