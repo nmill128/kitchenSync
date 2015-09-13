@@ -51,7 +51,7 @@ def userDash(username):
 	print record
 	
 
-	return render_template('dashboard.html',stock=db.fridge.find(),restock=db.restock.find())
+	return render_template('dashboard.html',stock=db.fridge.find(),restock=db.restock.find(),username=username)
 
 @app.route('/Users')
 def getUsers():
