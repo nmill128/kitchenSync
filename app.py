@@ -91,6 +91,9 @@ def checkIn():
 	Amount = foodRecord["amount"]
 	status = ""
 	record = db.fridge.find_one({"nfc":nfc})
+	listRec = db.restock.find_one({"upc":upc})
+	if (not listRec==None):
+		db.restock.remove({"upc":upc, "UserId":userId})
 	print nfc
 	if (not record == None):
 		print "Found"
@@ -237,7 +240,9 @@ def requestFood(username):
 		if not rec==None:
 			number = "1"+f["Phone"]
 			message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["Name"]+ " needs " + name)
-	return "success"
+		else:
+			return "None of your friends have " + name+"."
+	return "Request Sent"
 
 @app.route('/twilio/sms', methods = ["POST"])
 def response():

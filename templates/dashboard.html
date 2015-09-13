@@ -311,8 +311,8 @@
                 $('.requestre').click(function(){
                     var nfcid = this.name;
                     var url = "http://kitchensync.cloudapp.net/KenBapp/requestFood";
-                    var success = function () {
-                        alert("Request Sent!");
+                    var success = function (res) {
+                        alert(res);
                     };
 
                     $.ajax({
