@@ -211,7 +211,7 @@ def shareFalse(username):
 def addFriend(username):
 	friendName = request.form["friend"]
 	record = db.user.find_one({"username":username})
-	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":record["sharing"], "EXPreminders":record["EXPreminders"], "friends":record[friends].append(friendName)})
+	db.users.insert({"UserId":record["UserId"], "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":record["sharing"], "EXPreminders":record["EXPreminders"], "Friends":record["Friends"].append(friendName)})
 
 
 # @app.route('/<username>/requestFood', methods = ["POST"])
