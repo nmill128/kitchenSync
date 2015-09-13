@@ -159,7 +159,7 @@ def checkOut():
 	name = record["Name"]
 	string = "Success"
 	# Delete it from the fridge area
-	db.fridge.delete_one({"nfc":nfc})
+	db.fridge.remove({"nfc":nfc})
 	#Add its info to the restock area
 	db.restock.insert({"upc":record["upc":upc],"nfc":record["nfc":nfc],"User":record["User":user], "Date_Used":mydate.strtftime("%m%d%Y")})
 	jsonstr = {"name":name, "string":string}
