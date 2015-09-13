@@ -155,7 +155,7 @@ def checkOut():
 	print nfc
 	print userId
 	#temp record
-	record = db.fridge.find_one({"nfc":long(nfc),"UserId":userId})
+	record = db.fridge.find_one({"nfc":long(nfc)})
 	name = record["name"]
 	string = "Success"
 	# Delete it from the fridge area
