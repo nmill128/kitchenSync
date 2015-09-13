@@ -21,9 +21,9 @@ db = client.test
 
 
 #Twilio stuff
-TWILIO_ACCOUNT_SID="AC7fe706b555283cfe832a73bc4e276788"
-TWILIO_AUTH_TOKEN="d1e515b4d1a316ca7fb4a40ace251d8e"
-client = TwilioRestClient()
+account="AC7fe706b555283cfe832a73bc4e276788"
+token="d1e515b4d1a316ca7fb4a40ace251d8e"
+client = TwilioRestClient(account, token)
 
 
 
