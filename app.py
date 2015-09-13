@@ -165,9 +165,38 @@ def checkOut():
 	jsonstr = {"name":name, "string":string}
 	return json.dumps(jsonstr)
 
+@app.route('/<username>/delete', methods = ["POST"])
+def delete(username):
+
+	nfc = request.form["nfc"]
+	record = db.fridge.find_one({"nfc":nfc})
+	name = record["Name"]
+	string = "Success"
+	# Delete it from the fridge area
+	db.fridge.remove({"nfc":nfc})
+	#Add its info to the restock area
+	db.restock.insert({"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
+	jsonstr = {"name":name, "string":string}
+	return json.dumps(jsonstr)
+	
+@app.route('/<username>/shareTrue', methods = ['POST'])
+def shareTrue(username):
+	userId = request.form["userId"]
+	record = db.user.find_one({"username":username})
+	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":True, "EXPreminders":record["EXPreminders"], "friends":record[friends])
 
 
+@app.route('/<username>/shareFalse', methods = ['POST'])
+def shareFalse(username):
+	userId = request.form["userId"]
+	record = db.user.find_one({"username":username})
+	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":False, "EXPreminders":record["EXPreminders"], "friends":record[friends])
 
+@app.route('/<username>/addFriend', methods = ["POST"])
+def addFriend(username):
+	friendName = request.form["friend"]
+	record = db.user.find_one({"username":username})
+	db.users.insert({"UserId":userId, "username":record["Username"], "password":record["password"], "name":record["name"], "phone":record["phone"], "sharing":record["sharing"], "EXPreminders":record["EXPreminders"], "friends":record[friends].append(friendName))
 
 
 @app.route('/<username>')
@@ -177,9 +206,7 @@ def dashboard(username):
 		return username
 	else:
 		return "daron is a nice lady\n" + username
-@app.route('/<username>/AddFriend', methods=['POST'])
-def addFriend(username):
-	return 'Hi friend'
+
 
 
 # @app.route('/login', methods = ['GET'])
