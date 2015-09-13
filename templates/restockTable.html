@@ -1,0 +1,28 @@
+<table class="notebook-form centered">
+    <thead>
+    <tr>
+        <th data-field="checkbox"></th>
+        <th class="td_left_text" data-field="name" >Name</th>
+        <th data-field="date-add">Date Added</th>
+        <th data-field="price">Price</th>
+        <th data-field="nav"></th>
+    </tr>
+    </thead>
+    <tbody id="restockTable">
+    {% for item in restock %}
+    <tr>
+        <td>
+            <input type="checkbox" id="check-{{ item.name }}" />
+            <label for="check-{{ item.name }}"></label>
+        </td>
+        <td class="td_left_text">{{ item.name }}</td>
+        <td>{{ item.Date_Used.strftime('%b %d') }}</td>
+        <td>{{ item.price }}</td>
+        <td class="tr_nav">
+            <a href="#" class="right"><i class="material-icons blue-text">note_add</i></a>
+            <a href="#" name="{{ item.upc }}" class="deleteButtonRe right"><i class="material-icons red-text">delete</i></a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

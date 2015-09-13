@@ -190,7 +190,7 @@ def delete(username):
 	# Delete it from the fridge area
 	db.restock.remove({"nfc":nfc})
 	record = db.users.find_one({"username":username})
-   	return render_template('kitchenTable.html',stock=db.restock.find({"UserId":record["UserId"]}))
+   	return render_template('restockTable.html',stock=db.restock.find({"UserId":record["UserId"]}))
 	
 @app.route('/<username>/shareTrue', methods = ['POST'])
 def shareTrue(username):
