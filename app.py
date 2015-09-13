@@ -164,7 +164,8 @@ def checkOut():
 	db.fridge.remove({"nfc":nfc})
 	#Add its info to the restock area
 	url = "http://api.walmartlabs.com/v1/items?apiKey=jgz3vtvr9cuwguzrzpn54nuy&upc=" + record["upc"]
-    contents = urllib2.urlopen(url).read()
+    contents = urllib2.urlopen(url)
+    contents = contents.read()
     data = json.loads(contents)
     data = data["items"]
     price = "N/A"
