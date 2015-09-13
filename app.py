@@ -168,22 +168,14 @@ def checkOut():
 
 @app.route('/<username>/delete', methods = ["POST"])
 def delete(username):
-	print "delete"
+	print "delete moo"
 	nfc = request.form["nfc"]
 	print nfc
 	# Delete it from the fridge area
 	db.fridge.remove({"nfc":nfc})
-# <<<<<<< HEAD
-# 	#Add its info to the restock area
-# 	db.restock.insert({"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
-# 	jsonstr = {"name":name, "string":string}
-# 	return json.dumps(jsonstr)
-
-# =======
 	record = db.users.find_one({"username":username})
    	return render_template('kitchenTable.html',stock=db.fridge.find())
 	
-# >>>>>>> 3fd07d98cc5a111361d67077671bcc6155c1f46b
 @app.route('/<username>/shareTrue', methods = ['POST'])
 def shareTrue(username):
 	userId = request.form["userId"]
@@ -214,7 +206,7 @@ def addFriend(username):
 # 		number = "1"+f["phone"]
 # 		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["name"]+ " needs " + foodName)
 
-@app.route('/twilio/sms', methods=["POST"])
+@app.route('/twilio/sms')
 def response():
 	from_number = request.values.get('From', None)
 	print from_number
@@ -227,8 +219,9 @@ def response():
 		date_used = f["Date_Used"] 
 		string.append(name + " Used on: " + date_used +"\n")
 	r = twiml.Response()
-	r.message(string)
-	return(str(r))
+
+	r.message("Welcome to twilio!")
+	print(str(r))
 
 
 @app.route('/<username>')
