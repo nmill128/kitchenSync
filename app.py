@@ -105,6 +105,7 @@ def checkIn():
 @app.route('/Plus', methods = ['POST'])
 def addOne():
 	nfc = request.form["nfc"]
+	print nfc
 	userId = request.form["userId"]
 	foodRecord = db.food.find_one({"nfc":long(nfc)})
 	name = foodRecord["name"]
@@ -125,6 +126,7 @@ def addOne():
 @app.route('/Minus', methods = ['POST'])
 def subOne():
 	nfc = request.form["nfc"]
+	print nfc
 	userId = request.form["userId"]
 	foodRecord = db.food.find_one({"nfc":long(nfc)})
 	name = foodRecord["name"]
