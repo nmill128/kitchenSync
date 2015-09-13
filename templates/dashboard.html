@@ -145,9 +145,9 @@
                 {% for item in stock %}
                 <tr>
                     <td class="td_left_text">{{ item.Name }}</td>
-                    <td>{{ item.dateAdded }}</td>
-                    <td>{{ item.serving }}</td>
-                    <td>{{ item.expireDate }}</td>
+                    <td>{{ item.Date_added }}</td>
+                    <td>{{ item.amount }}</td>
+                    <td>{{ item.ExpDate }}</td>
                     <td class="tr_nav">
                         <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
                         <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
@@ -218,8 +218,8 @@
                         <input type="checkbox" id="check-{{ item.name }}" />
                         <label for="check-{{ item.name }}"></label>
                     </td>
-                    <td class="td_left_text">{{ item.name }} </td>
-                    <td>{{ item.dateAdded }}</td>
+                    <td class="td_left_text">{{ item.Name }} </td>
+                    <td>{{ item.Date_added }}</td>
                     <td>{{ item.price }}</td>
                     <td class="tr_nav">
                         <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
