@@ -214,15 +214,19 @@ def response():
 	print readableNumber
 	record = db.users.find_one({"Phone":str(readableNumber)})
 	userId = record["UserId"]
+	print userId
 	foods = db.restock.find({"UserId":userId})
+	count = foods.count()
 	string = "You are out of:\n"
-	for f in foods:
+	while count > 0:
+		f = db.restock.find_one({"UserId":userid},skip=count-1)
+		count -=count
 		print f
 		name = f["name"]
 		date_used = f["Date_Used"] 
 		string.append(name + " Used on: " + date_used +"\n")
+	
 	r = twiml.Response()
-
 	r.message(string)
 	return(str(r))
 
