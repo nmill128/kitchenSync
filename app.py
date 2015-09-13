@@ -218,7 +218,7 @@ def addFriend(username):
 def response():
 	r = twiml.Response()
 	r.message("Welcome to twilio!")
-	print(str(r))
+	return(str(r))
 
 
 @app.route('/<username>')
