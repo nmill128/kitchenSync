@@ -257,6 +257,7 @@ def requestFood(username):
 	friends = record["Friends"]
 	print friends
 	for friend in friends:
+		print friend
 		f = db.users.find_one({"username":friend})
 		UserId = f["UserId"]
 		print UserId
