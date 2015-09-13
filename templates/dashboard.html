@@ -245,13 +245,13 @@
 
                 <div class="col s12 m6">
                     <ul class="collection" id="htmlinsertfriends">
-                        {{ for item in friends }}
+                        {% for item in friends %}
                         <li class="collection-item avatar">
                             <i class="material-icons circle">perm_identity</i>
                             <span class="title">{{ item }}</span>
                             <a href="#!" name="{{ item }}" class="secondary-content"><i class="material-icons">delete</i></a>
                         </li>
-                        {{ end for }}
+                        {% end for %}
                     </ul>
                 </div>
 
