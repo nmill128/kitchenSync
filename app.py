@@ -167,17 +167,11 @@ def checkOut():
 
 @app.route('/<username>/delete', methods = ["POST"])
 def delete(username):
-
 	nfc = request.form["nfc"]
-	record = db.fridge.find_one({"nfc":nfc})
-	name = record["Name"]
-	string = "Success"
 	# Delete it from the fridge area
 	db.fridge.remove({"nfc":nfc})
-	#Add its info to the restock area
-	db.restock.insert({"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
-	jsonstr = {"name":name, "string":string}
-	return json.dumps(jsonstr)
+	record = db.users.find_one({"username":username})
+   	return render_template('kitchenTable.html',stock=db.fridge.find())
 	
 @app.route('/<username>/shareTrue', methods = ['POST'])
 def shareTrue(username):
