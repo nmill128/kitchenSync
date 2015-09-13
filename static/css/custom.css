@@ -47,6 +47,12 @@ nav{
         width: 55px;
         padding-right: 0;
     }
+    h4{
+        font-size: 25px;
+    }
+    .dropdown-button{
+        padding-left: 20px;
+    }
 }
 /* Helper */
 .no_bot_margin{
