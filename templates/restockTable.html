@@ -1,11 +1,18 @@
 <table class="notebook-form centered">
     <thead>
+    <tr style="border-bottom: none;">
+        <th></th>
+        <th><h4 class="td_left_text">Shopping List</h4></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
     <tr>
         <th data-field="checkbox"></th>
         <th class="td_left_text" data-field="name" >Name</th>
         <th data-field="date-add">Date Added</th>
         <th data-field="price">Price</th>
-        <th data-field="nav"></th>
+        <th data-field="nav" class="hide-on-small-only"></th>
     </tr>
     </thead>
     <tbody id="restockTable">
@@ -18,9 +25,9 @@
         <td class="td_left_text">{{ item.name }}</td>
         <td>{{ item.Date_Used.strftime('%b %d') }}</td>
         <td>{{ item.price }}</td>
-        <td class="tr_nav">
-            <a href="#" class="right"><i class="material-icons blue-text">note_add</i></a>
-            <a href="#" name="{{ item.upc }}" class="deleteButtonRe right"><i class="material-icons red-text">delete</i></a>
+        <td class="tr_nav hide-on-small-only">
+            <a href="#" class="right requestre" name="{{ item.nfc }}"><i class="material-icons blue-text">note_add</i></a>
+            <a href="#" name="{{ item.nfc }}" class="deleteButtonRe right"><i class="material-icons red-text">delete</i></a>
         </td>
     </tr>
     {% endfor %}

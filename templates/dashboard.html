@@ -295,7 +295,7 @@
                     },
                     error: function(){
                         Materialize.toast('Sorry! Could not add a friend at this time.', 4000);
-                    }
+                    };
                 });
             });
 
@@ -322,7 +322,7 @@
                         data: {nfc: nfcid},
                         success: success
                     });
-                })
+                });
             };
             listners();
 
@@ -341,7 +341,7 @@
                         data: {friend: friend},
                         success: success
                     });
-                })
+                });
             };
             listnersFriends();
 
