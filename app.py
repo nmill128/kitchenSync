@@ -83,7 +83,7 @@ def remindDates():
 				number = "1"+f["Phone"]
 				string = "Your "+ r["Name"] + "expires today."
 				message = client.sms.messages.create(to=+long(number), from_=+17038103574,body=string)	
-	return(str(string))
+	return(str(string+"Success"))
 
 
 @app.route('/AddUser', methods = ['POST'])
