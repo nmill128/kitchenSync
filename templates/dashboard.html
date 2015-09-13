@@ -294,7 +294,7 @@
             $('.deleteButton').click(function(){
                 console.log(this.name);
                 console.log($(this).html);
-                console.log($(this).name);
+                console.log($(this)[0].name);
                 var nfcid = $(this).parent.name;
                 console.log(nfcid);
                 var url = "http://kitchensync.cloudapp.net/KenBapp/delete";
