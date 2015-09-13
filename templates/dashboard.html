@@ -153,7 +153,7 @@
                         <td>{{ item.Date_Used.strftime('%b %d') }}</td>
                         <td>{{ item.price }}</td>
                         <td class="tr_nav">
-                            <a href="#" class="right"><i class="material-icons blue-text">note_add</i></a>
+                            <a href="#" class="right requestre" name="{{ item.nfc }}"><i class="material-icons blue-text">note_add</i></a>
                             <a href="#" name="{{ item.nfc }}" class="deleteButtonRe right"><i class="material-icons red-text">delete</i></a>
                         </td>
                     </tr>
@@ -303,7 +303,21 @@
                         data: {nfc: nfcid},
                         success: success
                     });
-                })
+                });
+                $('.requestre').click(function(){
+                    var nfcid = this.name;
+                    var url = "http://kitchensync.cloudapp.net/KenBapp/requestFood";
+                    var success = function () {
+                        alert("Request Sent!");
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {nfc: nfcid},
+                        success: success
+                    });
+                });
             };
             listnersRe();
         });
