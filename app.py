@@ -40,7 +40,7 @@ def index():
 	#message = client.sms.messages.create(to=+17038557270, from_=+17038103574,body="Hello there!")
 	return "<h1>Hi Ben!<h1>"
 
-@app.route('/dashboard')
+@app.route('/<username>/dashboard')
 def userDash(username):
 	record = db.users.find_one({"username":username})
 	print record
