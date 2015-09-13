@@ -297,6 +297,16 @@
                     var success = function (res, moo) {
                         document.getElementById("htmlinsert").innerHTML = res;
                         listners();
+
+                        var url = "http://kitchensync.cloudapp.net/KenBapp/restockLoad";
+                        $.ajax({
+                            type: "GET",
+                            url: url,
+                            success: function(res){
+                                document.getElementById("htmlinsertre").innerHTML = res;
+                                listnersRe();
+                            }
+                        });
                     };
 
                     $.ajax({

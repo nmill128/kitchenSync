@@ -277,6 +277,12 @@ def delete(username):
 	db.restock.insert({"name":data["name"],"price":price,"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
    	return render_template('kitchenTable.html',stock=db.fridge.find({"UserId":('{0:.3g}'.format(userrecord["UserId"]))}))
 
+@app.route('/<username>/restockLoad', methods = ["POST"])
+@crossdomain(origin='*')
+def restockLoad(username):
+	record = db.users.find_one({"username":username})
+   	return render_template('restockTable.html',restock=db.restock.find({"UserId":('{0:.3g}'.format(record["UserId"]))}))
+
 @app.route('/<username>/restockDelete', methods = ["POST"])
 @crossdomain(origin='*')
 def restockDelete(username):
