@@ -42,7 +42,12 @@ nav{
     font-size: .85rem;
     padding: .15rem 1rem;
 }
-
+@media screen and (max-width: 600px) {
+    .notebook-form tr td:first-child{
+        width: 55px;
+        padding-right: 0;
+    }
+}
 /* Helper */
 .no_bot_margin{
     margin-bottom: 0;
