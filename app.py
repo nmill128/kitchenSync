@@ -221,7 +221,7 @@ def response():
 	while counter < count:
 		f = db.restock.find_one({"UserId":str(int(userId))},skip=counter)
 		counter +=1
-		print f
+		print counter
 		nfc = f["nfc"]
 		print nfc
 		r = db.food.find_one({"nfc":long(nfc)})
