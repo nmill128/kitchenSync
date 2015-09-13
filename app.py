@@ -225,7 +225,7 @@ def response():
 		print f
 		nfc = f["nfc"]
 		print nfc
-		name = db.food.find_one({"nfc":nfc})
+		name = db.food.find_one({"nfc":long(nfc)})
 		print name
 		date_used = f["Date_Used"] 
 		print date_used
