@@ -140,7 +140,7 @@
                     <thead>
                     <tr>
                         <th></th>
-                        <th>Shopping List</th>
+                        <th><h4 class="td_left_text">Shopping List</h4></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -290,8 +290,8 @@
                 Materialize.toast('Sorry! Could not add item at this time.', 4000);
             }
 
-            $('#modal1_add').click(showErrorAdd());
-            $('#modal2_add').click(showErrorAdd());
+            $('#modal1_add').click(showErrorAdd);
+            $('#modal2_add').click(showErrorAdd);
 
             var listners = function() {
                 $('.deleteButton').click(function () {
