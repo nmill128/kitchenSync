@@ -223,7 +223,8 @@ def response():
 		f = db.restock.find_one({"UserId":str(int(userId))},skip=count-1)
 		count -=count
 		print f
-		name = f["name"]
+		nfc = f["nfc"]
+		name = db.food.find_one({"nfc":nfc})
 		date_used = f["Date_Used"] 
 		string.append(name + " Used on: " + date_used +"\n")
 	
