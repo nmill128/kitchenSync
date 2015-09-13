@@ -56,7 +56,7 @@ def userDash(username):
 	print record
 	
 
-	return render_template('dashboard.html',stock=db.fridge.find({"UserId":('{0:.3g}'.format(record["UserId"]))}),restock=db.restock.find({"UserId":('{0:.3g}'.format(record["UserId"]))}),username=username)
+	return render_template('dashboard.html',friends=record["Friends"],stock=db.fridge.find({"UserId":('{0:.3g}'.format(record["UserId"]))}),restock=db.restock.find({"UserId":('{0:.3g}'.format(record["UserId"]))}),username=username)
 
 @app.route('/Users')
 def getUsers():
