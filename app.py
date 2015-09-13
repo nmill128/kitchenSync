@@ -217,6 +217,7 @@ def response():
 	print int(userId)
 	foods = db.restock.find({"UserId":int(userId)})
 	count = foods.count()
+	print count
 	string = "You are out of:\n"
 	while count > 0:
 		f = db.restock.find_one({"UserId":userid},skip=count-1)
