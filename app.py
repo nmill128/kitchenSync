@@ -214,16 +214,17 @@ def response():
 	print readableNumber
 	record = db.users.find_one({"Phone":str(readableNumber)})
 	userId = record["UserId"]
-	foods = db.restock.find({"userId":userId})
+	foods = db.restock.find({"UserId":userId})
 	string = "You are out of:\n"
+	print foods
 	for f in foods:
 		name = f["name"]
 		date_used = f["Date_Used"] 
 		string.append(name + " Used on: " + date_used +"\n")
 	r = twiml.Response()
 
-	r.message("Welcome to twilio!")
-	print(str(r))
+	r.message(string)
+	return(str(r))
 
 
 @app.route('/<username>')
