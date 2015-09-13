@@ -38,7 +38,7 @@ def getDate(dt):
 @app.route('/')
 def index():
 	message = client.messages.create(to=+17038557270, from_=+17038103574,body="Hello there!")
-    return "<h1>Hi Ben!<h1>"
+	return "<h1>Hi Ben!<h1>"
 
 @app.route('/<username>/dashboard')
 def userDash(username):
