@@ -145,9 +145,9 @@
                 {% for item in stock %}
                 <tr>
                     <td class="td_left_text">{{ item.Name }}</td>
-                    <td>{{ item.Date_added }}</td>
+                    <td>{{ item.Date_added.strftime('%b %w') }}</td>
                     <td>{{ item.amount }}</td>
-                    <td>{{ item.ExpDate }}</td>
+                    <td>{{ item.ExpDate.strftime('%b %w') }}</td>
                     <td class="tr_nav">
                         <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
                         <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
