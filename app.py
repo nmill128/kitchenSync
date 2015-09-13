@@ -80,7 +80,7 @@ def remindDates():
 		if (r["ExpDate"].day == date.today().day):
 			
 			print r["UserId"]
-			user = db.users.find_one({"UserId":r["UserId"]})
+			user = db.users.find_one({"UserId":int(r["UserId"])})
 			if (not user == None) and user["EXPreminders"]:
 				number = "1"+f["Phone"]
 				string = "Your "+ r["Name"] + "expires today."
