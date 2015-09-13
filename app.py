@@ -25,6 +25,9 @@ account="AC7fe706b555283cfe832a73bc4e276788"
 token="d1e515b4d1a316ca7fb4a40ace251d8e"
 client = TwilioRestClient(account, token)
 
+#This is how we create a Twilio Message
+#Right now they can only go to my phone and Yeomans'
+#message = client.sms.messages.create(to=+17038557270, from_=+17038103574,body="Hello there!")
 
 
 
@@ -149,14 +152,15 @@ def subOne():
 def checkOut():
 	nfc = request.form["nfc"]
 	#temp record
-	record = db.stock.find_one({"nfc":nfc})
+	record = db.fridge.find_one({"nfc":long(nfc)})
 	name = record["name"]
-	ExpDate = record["exp"]
+	string = "Success"
 	# Delete it from the fridge area
 	db.fridge.delete_one({"nfc":nfc})
 	#Add its info to the restock area
 	db.restock.insert({"upc":record["upc":upc],"nfc":record["nfc":nfc],"User":record["User":user], "Date_Used":mydate.strtftime("%m%d%Y")})
-	return "Success"
+	jsonstr = {"name":name, "string":string}
+	return json.dumps(jsonstr)
 
 
 
