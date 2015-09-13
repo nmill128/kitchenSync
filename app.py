@@ -195,9 +195,9 @@ def checkOut():
 	data = data["items"][0]
 	price = "N/A"
 	if "msrp" in data:
-		price = data["msrp"]
+		price = "{:.2f}".format(data["msrp"])
 	elif "saleprice" in data:
-		price = data["salePrice"]
+		price = "{:.2f}".format(data["salePrice"])
 	db.restock.insert({"name":data["name"],"price":price,"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
 	jsonstr = {"name":name, "string":string}
 	return json.dumps(jsonstr)
