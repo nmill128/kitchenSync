@@ -206,9 +206,22 @@ def addFriend(username):
 # 		number = "1"+f["phone"]
 # 		message = client.sms.messages.create(to=+long(number), from_=+17038103574,body="Hello!\n Your friend " + record["name"]+ " needs " + foodName)
 
-@app.route('/twilio/sms')
+@app.route('/twilio/sms', methods = ["POST"])
 def response():
+	from_number = request.values.get('From', None)
+	print from_number
+	readableNumber = from_number[2:12]
+	print readableNumber
+	record = db.users.find_one({"phone":readableNumber})
+	userId = record["UserId"]
+	foods = db.restock.find({"userId":userId})
+	string = "You are out of:\n"
+	for f in foods:
+		name = f["name"]
+		date_used = f["Date_Used"] 
+		string.append(name + " Used on: " + date_used +"\n")
 	r = twiml.Response()
+
 	r.message("Welcome to twilio!")
 	print(str(r))
 
