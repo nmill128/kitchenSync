@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
+                                <a id="modal1_add"href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
                                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
 
                             </div>
@@ -138,6 +138,14 @@
             <div id="htmlinsertre">
                 <table class="notebook-form centered">
                     <thead>
+                    <tr>
+                        <th></th>
+                        <th>Shopping List</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+
+                    </tr>
                     <tr>
                         <th data-field="checkbox"></th>
                         <th class="td_left_text" data-field="name" >Name</th>
@@ -196,7 +204,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
+                    <a id="modal2_add" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add</a>
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
 
                 </div>
@@ -268,15 +276,23 @@
                     url: url,
                     data: {friend: friendUser},
                     success: function(){
-                        alert("Friend added!");
+                        Materialize.toast('Friend added!', 4000);
+                        $('#friend_name').reset();
+                    },
+                    error: function(){
+                        Materialize.toast('Sorry! Could not add a friend at this time.', 4000);
                     }
                 });
             });
 
-            $('#addFriendButton').click(function(){
-                Materialize.toast('Friend added!', 4000);
-                $('#friend_name').reset();
-            })
+
+            var showErrorAdd = function(){
+                Materialize.toast('Sorry! Could not add item at this time.', 4000);
+            }
+
+            $('#modal1_add').click(showErrorAdd());
+            $('#modal2_add').click(showErrorAdd());
+
             var listners = function() {
                 $('.deleteButton').click(function () {
                     var nfcid = this.name;
