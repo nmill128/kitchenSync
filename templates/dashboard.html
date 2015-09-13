@@ -292,7 +292,7 @@
             });
 
             $('.deleteButton').click(function(){
-                var nfc = $(this).name;
+                var nfcid = $(this).name;
                 var url = "http://kitchensync.cloudapp.net/KenBapp/delete";
                 var success = function(res){
                     $('#kitchenTable').html = res;
@@ -301,7 +301,7 @@
                 $.ajax({
                     type: "POST",
                     url: url,
-                    data: {nfc:nfc},
+                    data: {nfc:nfcid},
                     success: success
                 });
             })
