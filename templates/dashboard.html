@@ -111,7 +111,7 @@
                 </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="kitchenTable">
                 {% for item in stock %}
                 <tr>
                     <td class="td_left_text">{{ item.Name }}</td>
@@ -120,7 +120,7 @@
                     <td>{{ item.ExpDate.strftime('%b %d') }}</td>
                     <td class="tr_nav">
                         <a href="#!" class="right"><i class="material-icons blue-text">note_add</i></a>
-                        <a href="#!" class="right"><i class="material-icons red-text">delete</i></a>
+                        <a name="{{ item.nfc }}" href="#!" class="deleteButton right"><i class="material-icons red-text">delete</i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -290,6 +290,21 @@
                 selectYears: 15, // Creates a dropdown of 15 years to control year
                 format: 'mm/d/yyyy',
             });
+
+            $('.deleteButton').click(function(){
+                var nfc = $(this).name;
+                var url = "http://kitchensync.cloudapp.net/KenBapp/CheckOut";
+                var success = function(res){
+                    $('#kitchenTable').html = res;
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: nfc,
+                    success: success
+                });
+            })
         });
     </script>
 </body>
