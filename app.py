@@ -223,7 +223,7 @@ def addFriend(username):
 def requestFood(username):
 	nfc = request.form["nfc"]
 	print nfc
-	foodRecord = db.fridge.find_one({"nfc":long(nfc)})
+	foodRecord = db.food.find_one({"nfc":long(nfc)})
 	name = foodRecord["name"]
 	print name 
 	record = db.users.find_one({"username":username})
