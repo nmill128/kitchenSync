@@ -188,6 +188,7 @@ def delete(username):
 def restockDelete(username):
 	nfc = request.form["nfc"]
 	# Delete it from the fridge area
+	print nfc
 	db.restock.remove({"nfc":nfc})
 	record = db.users.find_one({"username":username})
    	return render_template('restockTable.html',stock=db.restock.find({"UserId":record["UserId"]}))
