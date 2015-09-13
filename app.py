@@ -226,7 +226,7 @@ def response():
 		nfc = f["nfc"]
 		name = db.food.find_one({"nfc":nfc})
 		date_used = f["Date_Used"] 
-		string = string +name + " Used on: " + date_used +"\n")
+		string = string +name + " Used on: " + date_used +"\n"
 	
 	r = twiml.Response()
 	r.message(string)
