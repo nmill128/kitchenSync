@@ -259,6 +259,7 @@ def requestFood(username):
 		print friend
 		f = db.users.find_one({"username":friend})
 		UserId = f["UserId"]
+		print foodRecord["upc"]
 		rec = db.fridge.find_one({"UserId":UserId, "upc":foodRecord["upc"]})
 		if not rec==None:
 			number = "1"+f["Phone"]
