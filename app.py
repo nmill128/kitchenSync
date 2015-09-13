@@ -261,8 +261,9 @@ def checkOut():
 def delete(username):
 	nfc = request.form["nfc"]
 	# Delete it from the fridge area
+	record = db.fridge.find_one({"nfc":nfc})
 	db.fridge.remove({"nfc":nfc})
-	record = db.users.find_one({"username":username})
+	userrecord = db.users.find_one({"username":username})
 	#Add its info to the restock area
 	url = "http://api.walmartlabs.com/v1/items?apiKey=jgz3vtvr9cuwguzrzpn54nuy&upc=" + record["upc"]
 	contents=urllib2.urlopen(url).read()
@@ -274,7 +275,7 @@ def delete(username):
 	elif "saleprice" in data:
 		price = "{:.2f}".format(data["salePrice"])
 	db.restock.insert({"name":data["name"],"price":price,"upc":record["upc"],"nfc":record["nfc"],"UserId":record["UserId"], "Date_Used":datetime.now()})
-   	return render_template('kitchenTable.html',stock=db.fridge.find({"UserId":('{0:.3g}'.format(record["UserId"]))}))
+   	return render_template('kitchenTable.html',stock=db.fridge.find({"UserId":('{0:.3g}'.format(userrecord["UserId"]))}))
 
 @app.route('/<username>/restockDelete', methods = ["POST"])
 @crossdomain(origin='*')
