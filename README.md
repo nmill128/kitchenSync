@@ -8,10 +8,10 @@ http://www.mykitchensync.co/
 http://devpost.com/software/kitchen-sync
 
 ### Contributers:
-<p>Nick Miller (nmill128)    - Backend</p>
-<p>Chris Lai       - Frontend</p>
-<p>Erik Yeomans (yeomanse)   - Hardware and Misc</p>
-<p>Ben Kapp        - Hardware</p>
+<p>Nick Miller (nmill128)\t\t\t- Backend</p>
+<p>Chris Lai (ChrisLai)\t\t\t- Frontend</p>
+<p>Erik Yeomans (yeomanse)\t\t\t- Hardware and Misc</p>
+<p>Ben Kapp\t\t\t\t\t- Hardware</p>
 
 
 ### Shameless plug:
