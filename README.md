@@ -1,17 +1,17 @@
 # kitchenSync
 MHacks6
 
-#Check it out:
+### Check it out:
 http://www.mykitchensync.co/
 
-# Full hack description on devpost:
+### Full hack description on devpost:
 http://devpost.com/software/kitchen-sync
 
-# Contributers:
+### Contributers:
 Nick Miller     - Backend
 Chris Lai       - Frontend
 Erik Yeomans    - Hardware and Misc
 Ben Kapp        - Hardware
 
-# Shameless plug:
-We are looking for full time positions! 
+### Shameless plug:
+**We are looking for full time positions!**
