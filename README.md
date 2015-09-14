@@ -11,7 +11,7 @@ http://devpost.com/software/kitchen-sync
 <p>Nick Miller (nmill128)\t\t\t- Backend</p>
 <p>Chris Lai (ChrisLai)\t\t\t- Frontend</p>
 <p>Erik Yeomans (yeomanse)\t\t\t- Hardware and Misc</p>
-<p>Ben Kapp\t\t\t\t\t- Hardware</p>
+<p>Ben Kapp                           - Hardware</p>
 
 
 ### Shameless plug:
