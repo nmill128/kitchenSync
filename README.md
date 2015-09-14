@@ -8,10 +8,11 @@ http://www.mykitchensync.co/
 http://devpost.com/software/kitchen-sync
 
 ### Contributers:
-Nick Miller     - Backend
-Chris Lai       - Frontend
-Erik Yeomans    - Hardware and Misc
-Ben Kapp        - Hardware
+<p>Nick Miller     - Backend</p>
+<p>Chris Lai       - Frontend</p>
+<p>Erik Yeomans    - Hardware and Misc</p>
+<p>Ben Kapp        - Hardware</p>
+
 
 ### Shameless plug:
 **We are looking for full time positions!**
